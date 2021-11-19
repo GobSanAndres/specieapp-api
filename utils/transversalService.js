@@ -31,6 +31,34 @@ const getAllService = (Data, req, res, order) => {
     })
 }
 
+const listService = async(Data, req, res) => {
+    try{
+        const { limit = 10, from = 0 } = req.query;
+        const query = { state: true };
+
+        const [ total, items ] = await Promise.all([
+            Data.countDocuments(query),
+            Data.find(query)
+                .skip(Number(from))
+                .limit(Number(( limit )))
+        ]);
+
+        res.json({
+            statusCode: 200,
+            success: true,
+            total,
+            items
+        })
+    }catch(error){
+        return res.json({
+            statusCode: 400,
+            success: true,
+            error
+        })
+    }
+    
+}
+
 const disableService = (Data, req, res) => {
     try{
         const { id, disable } = req.body;
@@ -86,7 +114,7 @@ const updateService = (Data, req, res) => {
     }catch(error){
         return res.json({
             statusCode: 400,
-            success: true,
+            success: false,
             error
         })
     }
@@ -126,5 +154,6 @@ module.exports = {
     getAllService,
     disableService,
     updateService,
-    createService
+    createService,
+    listService
 }
