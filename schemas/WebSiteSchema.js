@@ -7,9 +7,9 @@ const WebSiteCreate = Joi.object().keys({
     email: Joi.string().required(),
     footer: Joi.string().required(),
     domain: Joi.string().required(),
-    color_schemes: Joi.string().required(),
-    pages: Joi.string().required(),
-    social_links: Joi.string().required(),
+    color_schemes: Joi.object().required(),
+    pages: Joi.array().required(),
+    social_links: Joi.array().required()
 });
 
 const WebSiteUpdate = Joi.object().keys({
@@ -20,9 +20,9 @@ const WebSiteUpdate = Joi.object().keys({
     email: Joi.string().required(),
     footer: Joi.string().required(),
     domain: Joi.string().required(),
-    color_schemes: Joi.string().required(),
-    pages: Joi.string().required(),
-    social_links: Joi.string().required(),
+    color_schemes: Joi.object().required(),
+    pages: Joi.array().required(),
+    social_links: Joi.array().required()
 });
    
 

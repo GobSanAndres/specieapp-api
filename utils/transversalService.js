@@ -57,9 +57,9 @@ const listService = async(Data, req, res) => {
 
 const disableService = (Data, req, res) => {
     try{
-        const { id, disable } = req.body;
+        const { id, is_active } = req.body;
 
-        Data.findByIdAndUpdate(id, { is_active: !disable},
+        Data.findByIdAndUpdate(id, { is_active: !is_active},
             (error) => {
                 if(error)
                     return res.status(400).json({
@@ -69,7 +69,7 @@ const disableService = (Data, req, res) => {
                 else
                     return res.status(200).json({
                        success: true,
-                        message: `Elemento ${disable ? "deshabilitado" : "habilitado"} exitosamente`
+                        message: `Elemento ${is_active ? "deshabilitado" : "habilitado"} exitosamente`
                     })
             }
         )
