@@ -6,8 +6,15 @@ const UserSchema = Joi.object().keys({
             rol: Joi.string().required()
         })
     
-
+const UserUpdate = Joi.object().keys({
+    _id: Joi.string().required(),
+    email: Joi.string().required(),
+    password: Joi.string().required(),
+    rol: Joi.string().required()
+})
+    
 module.exports = {
-    UserSchema
+    UserSchema,
+    UserUpdate
 }
 

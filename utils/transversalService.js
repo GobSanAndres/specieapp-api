@@ -85,9 +85,8 @@ const disableService = (Data, req, res) => {
 const updateService = (Data, req, res) => {
     try{
         const update = req.body;
-        const { id } = update;
-
-        Data.findByIdAndUpdate(id, update,
+        
+        Data.findByIdAndUpdate(update._id, update,
             (error) => {
                 if(error)
                     return res.status(400).json({

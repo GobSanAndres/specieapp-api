@@ -10,7 +10,7 @@ const router = Router();
 
 router.post("/create", [validJWT, validator(WebSiteCreate)], create);
 
-router.post("/update", [validJWT, validator(WebSiteCreate)],update);
+router.post("/update", [validJWT, validator(WebSiteUpdate)],update);
 
 router.post("/disable", [validJWT, validator(GenericDisable)], disable);
 
