@@ -13,5 +13,6 @@ const RolUpdate = Joi.object().keys({
     
 
 module.exports = {
-    RolCreate
+    RolCreate,
+    RolUpdate
 }
