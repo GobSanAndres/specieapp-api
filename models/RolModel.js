@@ -4,13 +4,14 @@ const RolSchema = Schema(
     {
         code:{
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         name:{
             type: String,
             required: true
         },
-        estado: {
+        is_active: {
             type: Boolean,
             required: false,
             default: true

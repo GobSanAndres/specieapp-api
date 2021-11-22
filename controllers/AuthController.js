@@ -17,11 +17,11 @@ const Auth = async(req = request, res = response) => {
                 message: "Email invalido"
             })
         
-        if(!user.state)
+        if(!user.is_active)
             return res.json({
                 statusCode: 400,
                 success: false,
-                message: "State invalido"
+                message: "is_active invalido"
             });
         
         const validPassword = bycryptjs.compareSync(password, user.password);

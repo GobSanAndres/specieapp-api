@@ -22,12 +22,14 @@ const validJWT = async(req = request, res = response, next) => {
                 message: "Token no valido"
             })
 
-        if(!user.state)
+        if(!user.is_active)
             return res.status(401).json({
                 message: "Token no valido"
             })
         
         req.user = user;
+        next();
+
     }catch(error){
         res.status(401).json({
             message: "Token no valido"

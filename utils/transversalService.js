@@ -1,10 +1,9 @@
 const getAllService = (Data, req, res, order) => {
     const { page } = req.params;
 
-    Data.find({ state: true}).sort(order).exec((error, data) => {
+    Data.find({ is_active: true}).sort(order).exec((error, data) => {
         if(error)
-            return res.json({
-                statusCode: 400,
+            return res.status(400).json({
                 success: false,
                 error
             })
@@ -18,8 +17,7 @@ const getAllService = (Data, req, res, order) => {
             if(residuo > 0)
                 totalPages = Math.trunc(totalPages) + 1;
             
-            res.json({
-                statusCode: 200,
+            res.status(200).json({
                 success: true,
                 message: "Consulta exitosa",
                 totalResult,
@@ -34,7 +32,7 @@ const getAllService = (Data, req, res, order) => {
 const listService = async(Data, req, res) => {
     try{
         const { limit = 10, from = 0 } = req.query;
-        const query = { state: true };
+        const query = { is_active: true };
 
         const [ total, items ] = await Promise.all([
             Data.countDocuments(query),
@@ -43,16 +41,14 @@ const listService = async(Data, req, res) => {
                 .limit(Number(( limit )))
         ]);
 
-        res.json({
-            statusCode: 200,
+        res.status(200).json({
             success: true,
             total,
             items
         })
     }catch(error){
-        return res.json({
-            statusCode: 400,
-            success: true,
+        return res.status(400).json({
+           success: false,
             error
         })
     }
@@ -63,27 +59,24 @@ const disableService = (Data, req, res) => {
     try{
         const { id, disable } = req.body;
 
-        Data.findByIdAndUpdate(id, { state: !disable},
+        Data.findByIdAndUpdate(id, { is_active: !disable},
             (error) => {
                 if(error)
-                    return res.json({
-                        statusCode: 400,
+                    return res.status(400).json({
                         success: false,
                         error
                     })
                 else
-                    return res.json({
-                        statusCode: 200,
-                        success: true,
+                    return res.status(200).json({
+                       success: true,
                         message: `Elemento ${disable ? "deshabilitado" : "habilitado"} exitosamente`
                     })
             }
         )
 
     }catch(error){
-        return res.json({
-            statusCode: 400,
-            success: true,
+        return res.status(200).json({
+            success: false,
             error
         })
     }
@@ -97,14 +90,12 @@ const updateService = (Data, req, res) => {
         Data.findByIdAndUpdate(id, update,
             (error) => {
                 if(error)
-                    return res.json({
-                        statusCode: 400,
+                    return res.status(400).json({
                         success: false,
                         error
                     })
                 else
-                    return res.json({
-                        statusCode: 200,
+                    return res.status(200).json({
                         success: true,
                         message: "Actualización exitosa"
                     })
@@ -112,8 +103,7 @@ const updateService = (Data, req, res) => {
         )
 
     }catch(error){
-        return res.json({
-            statusCode: 400,
+        return res.status(400).json({
             success: false,
             error
         })
@@ -127,14 +117,12 @@ const createService = (Data, req, res) => {
 
         data.save(function(error, saved){
             if(error)
-                return res.json({
-                    statusCode: 400,
+                return res.status(400).json({
                     success: false,
                     error
                 })
         else
-            return res.json({
-                statusCode: 200,
+            return res.status(200).json({
                 success: true,
                 message: "Actualización exitosa",
                 _id: saved._id
@@ -142,9 +130,8 @@ const createService = (Data, req, res) => {
         })
 
     }catch(error){
-        return res.json({
-            statusCode: 400,
-            success: true,
+        return res.status(400).json({
+            success: false,
             error
         })
     }

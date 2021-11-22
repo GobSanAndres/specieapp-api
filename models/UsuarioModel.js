@@ -4,7 +4,8 @@ const UsuarioSchema = Schema(
     {
         email:{
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         password:{
             type: String,
@@ -14,7 +15,7 @@ const UsuarioSchema = Schema(
             type: Schema.Types.ObjectId,
             ref: 'Rol'
         },
-        state: {
+        is_active: {
             type: Boolean,
             required: false,
             default: true

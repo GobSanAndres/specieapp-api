@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
+const { routes } = require('../constants/routes')
 
 
 const { dbConnection } = require('../database/config');
@@ -10,25 +11,6 @@ class Server {
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-
-        this.arrayPaths = [
-            {
-                path: "/v1/api/questionary",
-                route: require("../routes/QuestionaryRoutes")
-            },
-            {
-                path: "/v1/api/user",
-                route: require("../routes/UserRoutes")
-            },
-            {
-                path: "/v1/api/auth",
-                route: require("../routes/AuthRoutes")
-            },
-            {
-                path: "/v1/api/rol",
-                route: require("../routes/RolRoutes")
-            }
-        ];
 
         //Conectar a base de datos
         this.connectionDB();
@@ -56,7 +38,7 @@ class Server {
     }
 
     routes(){
-        this.arrayPaths.forEach(item => {
+        routes.forEach(item => {
             this.app.use(item.path, item.route)
         })
     }

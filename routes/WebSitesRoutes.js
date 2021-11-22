@@ -2,18 +2,18 @@ const { Router } = require('express');
 
 const { validJWT } = require("../middlewares/validarjwt");
 const { validator } = require("../middlewares/validator");
-const { RolCreate } = require("../schemas/RolSchema")
+const { WebSiteCreate } = require("../schemas/WebSiteSchema")
 const { GenericDisable } = require("../schemas/GenericSchema");
 const { create, update, getAll, disable } = require("../controllers/RolController");
 
 const router = Router();
 
-router.post("/create", [ validator(RolCreate)], create);
+router.post("/create", [validJWT, validator(WebSiteCreate)], create);
 
-router.post("/update", [validJWT, validator(RolCreate)],update);
+router.post("/update", [validJWT, validator(WebSiteCreate)],update);
 
 router.post("/disable", [validJWT, validator(GenericDisable)], disable);
 
-router.get("/list", getAll);
+router.get("/list", [validJWT], getAll);
 
 module.exports = router;

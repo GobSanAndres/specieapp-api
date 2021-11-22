@@ -15,7 +15,7 @@ const update = (req = request, res = response) => {
 }
 
 const disable = (req = request, res = response) => {
-    Child.find({ $and: [ { state: true }, { idQuestionary: req.body.id }]}).exec((error, data) => {
+    Child.find({ $and: [ { is_active: true }, { idQuestionary: req.body.id }]}).exec((error, data) => {
         if(error)
             return res.json({
                 statusCode: 200,
