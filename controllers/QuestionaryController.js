@@ -36,7 +36,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    getAllService(Data, req, res, { title: 1});
+    getAllService(Data, req, res, null);
 }
 
 module.exports = {

@@ -29,14 +29,19 @@ const getAllService = (Data, req, res, order) => {
     })
 }
 
-const listService = async(Data, req, res) => {
+const listService = async(Data, req, res, isPopulate) => {
     try{
         const { limit = 10, from = 0 } = req.query;
         const query = { is_active: true };
 
+        let populate = isPopulate;
+        if(isPopulate == null)
+            populate = "";
+
         const [ total, items ] = await Promise.all([
             Data.countDocuments(query),
             Data.find(query)
+                .populate(populate)
                 .skip(Number(from))
                 .limit(Number(( limit )))
         ]);
@@ -59,7 +64,7 @@ const disableService = (Data, req, res) => {
     try{
         const { id, is_active } = req.body;
 
-        Data.findByIdAndUpdate(id, { is_active: !is_active},
+        Data.findByIdAndUpdate(id, { is_active: is_active},
             (error) => {
                 if(error)
                     return res.status(400).json({
@@ -69,7 +74,7 @@ const disableService = (Data, req, res) => {
                 else
                     return res.status(200).json({
                        success: true,
-                        message: `Elemento ${is_active ? "deshabilitado" : "habilitado"} exitosamente`
+                        message: `Elemento ${!is_active ? "deshabilitado" : "habilitado"} exitosamente`
                     })
             }
         )

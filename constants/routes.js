@@ -18,6 +18,10 @@ const routes = [
     {
         path: "/v1/api/website",
         route: require("../routes/WebSitesRoutes")
+    },
+    {
+        path: "/v1/api/webpage",
+        route: require("../routes/WebPageRoutes")
     }
 ];
 

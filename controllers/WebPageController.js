@@ -1,6 +1,6 @@
 const { response, request } = require("express");
 
-const Data = require("../models/WebSiteModel");
+const Data = require("../models/WebPageModel");
 
 const {  listService, disableService, updateService, createService } = require("../utils/transversalService");
 
@@ -18,7 +18,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    listService(Data, req, res, null);
+    listService(Data, req, res, "site_id");
 }
 
 module.exports = {

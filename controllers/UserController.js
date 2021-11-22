@@ -79,7 +79,7 @@ const update =  async(req = request, res = response) => {
 
 
 const disable = (req = request, res = response) => {
-    disableService(User, req, res);
+    disableService(User, req, res, null);
 }
 
 module.exports = {
