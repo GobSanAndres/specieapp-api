@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 const { validJWT } = require("../middlewares/validarjwt");
 const { validator } = require("../middlewares/validator");
-const { WebSiteCreate } = require("../schemas/WebSiteSchema")
+const { WebSiteCreate, WebSiteUpdate } = require("../schemas/WebSiteSchema")
 const { GenericDisable } = require("../schemas/GenericSchema");
 const { create, update, getAll, disable } = require("../controllers/RolController");
 
