@@ -9,12 +9,12 @@ const { create, update, list, disable } = require("../controllers/UserController
 
 const router = Router();
 
-router.post("/create", [validator(UserSchema)] , create);
+router.post("/create", [validJWT, validator(UserSchema)] , create);
 
-router.post("/update/:id",  [validator(UserSchema)], update);
+router.post("/update/:id",  [validJWT, validator(UserSchema)], update);
 
-router.post("/disable", [validator(GenericDisable)], disable);
+router.post("/disable", [validJWT, validator(GenericDisable)], disable);
 
-router.get("/list", list);
+router.get("/list",  [validJWT], list);
 
 module.exports = router;

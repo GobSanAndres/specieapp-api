@@ -8,12 +8,12 @@ const { create, update, getAll, disable } = require("../controllers/RolControlle
 
 const router = Router();
 
-router.post("/create", [ validator(RolCreate)], create);
+router.post("/create", [validJWT, validator(RolCreate)], create);
 
 router.post("/update", [validJWT, validator(RolCreate)],update);
 
 router.post("/disable", [validJWT, validator(GenericDisable)], disable);
 
-router.get("/list", getAll);
+router.get("/list", [validJWT], getAll);
 
 module.exports = router;
