@@ -15,6 +15,6 @@ router.post("/update/:id",  [validator(UserSchema)], update);
 
 router.post("/disable", [validator(GenericDisable)], disable);
 
-router.get("/list",  [validJWT], list);
+router.get("/list", list);
 
 module.exports = router;
