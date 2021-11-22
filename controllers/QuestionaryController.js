@@ -17,14 +17,14 @@ const update = (req = request, res = response) => {
 const disable = (req = request, res = response) => {
     Child.find({ $and: [ { is_active: true }, { idQuestionary: req.body.id }]}).exec((error, data) => {
         if(error)
-            return res.json({
+            return res.status(400).json({
                 statusCode: 200,
                 success: false,
                 error
             })
         else{
             if(data.length > 0)
-                return res.json({
+                return res.status(400).json({
                     statusCode: 200,
                     success: true,
                     message: "Sección creada con el Cuestionario relacionado"

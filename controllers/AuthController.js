@@ -11,14 +11,14 @@ const Auth = async(req = request, res = response) => {
     try{
         const user = await User.findOne({email});
         if(!user)
-            return res.json({
+            return res.status(400).json({
                 statusCode: 400,
                 success: false,
                 message: "Email invalido"
             })
         
         if(!user.is_active)
-            return res.json({
+            return res.status(400).json({
                 statusCode: 400,
                 success: false,
                 message: "is_active invalido"
@@ -27,7 +27,7 @@ const Auth = async(req = request, res = response) => {
         const validPassword = bycryptjs.compareSync(password, user.password);
 
         if(!validPassword)
-            return res.json({
+            return res.status(400).json({
                 statusCode: 400,
                 success: false,
                 message: "Invalid Password"
@@ -41,7 +41,7 @@ const Auth = async(req = request, res = response) => {
             token
         });
     }catch(error){
-        return res.json({
+        return res.status(400).json({
             statusCode: 400,
             success: false,
             error

@@ -19,7 +19,7 @@ const create = (req = request, res = response) => {
 
         usuario.save(function(error, saved){
             if(error)
-                return res.json({
+                return res.status(400).json({
                     statusCode: 400,
                     success: false,
                     error
@@ -33,7 +33,7 @@ const create = (req = request, res = response) => {
                 })
         })
     }catch(error){
-        return res.json({
+        return res.status(400).json({
             statusCode: 401,
             success: false,
             error
@@ -54,7 +54,7 @@ const update =  async(req = request, res = response) => {
         User.findByIdAndUpdate(_id, update,
             (error) => {
                 if(error)
-                    return res.json({
+                    return res.status(400).json({
                         statusCode: 400,
                         success: false,
                         error
@@ -69,7 +69,7 @@ const update =  async(req = request, res = response) => {
         
         );
     }catch(error){
-        return res.json({
+        return res.status(400).json({
             statusCode: 400,
             success: false,
             error
