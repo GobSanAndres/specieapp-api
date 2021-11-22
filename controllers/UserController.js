@@ -44,13 +44,14 @@ const create = (req = request, res = response) => {
 
 const update =  async(req = request, res = response) => {
     try{
-        const { id } = req.params;
         const { _id, email, password, rol, ...resto } = req.body;
 
         const salt = bcryptjs.genSaltSync();
         resto.password = bcryptjs.hashSync(password, salt);
 
-        User.findByIdAndUpdate(id, resto,
+        const update = { ... req.body, password: resto.password};
+
+        User.findByIdAndUpdate(_id, update,
             (error) => {
                 if(error)
                     return res.json({

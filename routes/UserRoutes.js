@@ -11,7 +11,7 @@ const router = Router();
 
 router.post("/create", [validJWT, validator(UserSchema)] , create);
 
-router.post("/update/:id",  [validJWT, validator(UserUpdate)], update);
+router.post("/update",  [validJWT, validator(UserUpdate)], update);
 
 router.post("/disable", [validJWT, validator(GenericDisable)], disable);
 
