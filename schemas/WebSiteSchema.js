@@ -8,7 +8,6 @@ const WebSiteCreate = Joi.object().keys({
     footer: Joi.string().required(),
     domain: Joi.string().required(),
     color_schemes: Joi.object().required(),
-    pages: Joi.array().required(),
     social_links: Joi.array().required()
 });
 
@@ -21,7 +20,6 @@ const WebSiteUpdate = Joi.object().keys({
     footer: Joi.string().required(),
     domain: Joi.string().required(),
     color_schemes: Joi.object().required(),
-    pages: Joi.array().required(),
     social_links: Joi.array().required()
 });
    

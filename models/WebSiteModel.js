@@ -31,10 +31,6 @@ const WebSiteSchema = Schema(
             type: Object,
             required: false
         },
-        pages: {
-            type: Array,
-            required: false
-        },
         social_links: {
             type: Array,
             required: false
