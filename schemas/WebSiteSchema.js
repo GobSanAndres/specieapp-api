@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 const WebSiteCreate = Joi.object().keys({
+    idSite: Joi.string().required(),
     title: Joi.string().required(),
     slogan: Joi.string().required(),
     phone: Joi.string().required(),
@@ -13,6 +14,7 @@ const WebSiteCreate = Joi.object().keys({
 
 const WebSiteUpdate = Joi.object().keys({
     _id: Joi.string().required(),
+    idSite: Joi.string().required(),
     title: Joi.string().required(),
     slogan: Joi.string().required(),
     phone: Joi.string().required(),
