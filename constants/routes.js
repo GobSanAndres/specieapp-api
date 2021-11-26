@@ -30,6 +30,10 @@ const routes = [
     {
         path: "/v1/api/item-banner",
         route: require("../routes/ItemBannerRoutes")
+    },
+    {
+        path: "/v1/api/public",
+        route: require("../routes/PublicWebRoutes")
     }
 ];
 

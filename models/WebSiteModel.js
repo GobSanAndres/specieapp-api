@@ -2,6 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const WebSiteSchema = Schema(
     {
+        idSite:{
+            type: String,
+            required: false,
+            unique: true
+        },
         title: {
             type: String,
             required: true,

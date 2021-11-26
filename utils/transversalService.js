@@ -29,6 +29,36 @@ const getAllService = (Data, req, res, order) => {
     })
 }
 
+const getPricipalRegister = (Principal, Secundary, req, res, keyPrincipal) => {
+    try{
+        const { id } = req.params;
+
+        Principal.find({ [keyPrincipal]: id, is_active: true }, 
+            (error) => {
+                if(error, data){
+                    console.log("Error ", error);
+                    return res.status(400).json({
+                        success: false,
+                        error
+                    })
+                }else{
+                    console.log("Data ", data);
+                    res.status(200).json({
+                        success: true,
+                        message: "Consulta exitosa",
+                        data
+                    })
+                }
+            }
+        )
+    }catch(error){
+        return res.status(400).json({
+            success: false,
+            error
+        })
+    }
+}
+
 const listService = async(Data, req, res, isPopulate) => {
     try{
         const { limit = 10, from = 0 } = req.query;
@@ -146,5 +176,6 @@ module.exports = {
     disableService,
     updateService,
     createService,
-    listService
+    listService,
+    getPricipalRegister
 }
