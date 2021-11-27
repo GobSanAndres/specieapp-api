@@ -34,6 +34,10 @@ const routes = [
     {
         path: "/v1/api/public",
         route: require("../routes/PublicWebRoutes")
+    },
+    {
+        path: "/v1/api/menu",
+        route: require("../routes/MenuRoutes")
     }
 ];
 

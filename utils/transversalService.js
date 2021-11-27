@@ -29,25 +29,27 @@ const getAllService = (Data, req, res, order) => {
     })
 }
 
-const getPricipalRegister = (Principal, Secundary, req, res, keyPrincipal) => {
+const getPricipalRegister = (Principal, Secondary, req, res, keyPrincipal) => {
     try{
         const { id } = req.params;
 
         Principal.find({ [keyPrincipal]: id, is_active: true }, 
-            (error) => {
-                if(error, data){
-                    console.log("Error ", error);
+            async(error, dataPrincipal) => {
+                if(error){
                     return res.status(400).json({
                         success: false,
                         error
                     })
                 }else{
-                    console.log("Data ", data);
+                    const dataSecondary = await Secondary.find({ site_id: dataPrincipal[0]._id, is_active: true });
+                    console.log("Data ", dataPrincipal[0]);
                     res.status(200).json({
                         success: true,
                         message: "Consulta exitosa",
-                        data
+                        dataPrincipal,
+                        dataSecondary
                     })
+                    
                 }
             }
         )
