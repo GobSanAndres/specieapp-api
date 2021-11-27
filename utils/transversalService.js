@@ -63,8 +63,8 @@ const getPricipalRegister = (Principal, Secondary, req, res, keyPrincipal) => {
 
 const listService = async(Data, req, res, isPopulate) => {
     try{
-        const { limit = 10, from = 0 } = req.query;
-        const query = { is_active: true };
+        const { limit = 10, from = 0, active } = req.query;
+        const query = { is_active: active != undefined ? active : true };
 
         let populate = isPopulate;
         if(isPopulate == null)
