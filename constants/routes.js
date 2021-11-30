@@ -38,6 +38,14 @@ const routes = [
     {
         path: "/v1/api/menu",
         route: require("../routes/MenuRoutes")
+    },
+    {
+        path: "/v1/api/species",
+        route: require("../routes/SpeciesRoutes")
+    },
+    {
+        path: "/v1/api/fishing-art",
+        route: require("../routes/FishingArtRoutes")
     }
 ];
 
