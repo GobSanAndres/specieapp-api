@@ -3,8 +3,7 @@ const { response, request } = require("express");
 const Data = require("../models/QuestionaryModel");
 const Child = require("../models/SectionModel");
 
-const {  getAllService, disableService, updateService, createService } = require("../utils/transversalService");
-
+const {  listService, disableService, updateService, createService } = require("../utils/transversalService");
 
 const create = (req = request, res = response) => {
     createService(Data, req, res);
@@ -36,7 +35,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    getAllService(Data, req, res, null);
+    listService(Data, req, res, null);
 }
 
 module.exports = {
