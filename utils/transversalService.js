@@ -1,27 +1,6 @@
 const { message } = require("../constants/response");
 const { sendDataResponse, genericResponse, internalError, badRequestError } = require("../utils/response");
 
-const getPricipalRegister = (Principal, Secondary, req, res, keyPrincipal) => {
-    try{
-        const { id } = req.params;
-
-        Principal.find({ [keyPrincipal]: id, is_active: true }, 
-            async(error, dataPrincipal) => {
-                if(error)
-                    badRequestError(res, error);
-                else{
-                    const dataSecondary = await Secondary.find({ site_id: dataPrincipal[0]._id, is_active: true });
-                    
-                    sendDataResponse(res, message.list, { dataPrincipal, dataSecondary });
-                    
-                }
-            }
-        )
-    }catch(error){
-        internalError(res, error);
-    }
-}
-
 const listService = async(Data, req, res, isPopulate) => {
     try{
         const { limit = 10, from = 0, active } = req.query;
@@ -102,6 +81,5 @@ module.exports = {
     disableService,
     updateService,
     createService,
-    listService,
-    getPricipalRegister
+    listService
 }
