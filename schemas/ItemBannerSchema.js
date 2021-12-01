@@ -3,14 +3,16 @@ const Joi = require('joi');
 const ItemBannerCreate = Joi.object().keys({
     title: Joi.string().required(),
     description: Joi.string().required(),
-    banner_id: Joi.string().required()
+    banner_id: Joi.string().required(),
+    order: Joi.number().required()
 });
 
 const ItemBannerUpdate = Joi.object().keys({
     _id: Joi.string().required(),
     title: Joi.string().required(),
     description: Joi.string().required(),
-    banner_id: Joi.string().required()
+    banner_id: Joi.string().required(),
+    order: Joi.number().required()
 });
    
 
