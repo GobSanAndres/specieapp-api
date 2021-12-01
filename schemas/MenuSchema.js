@@ -18,7 +18,6 @@ const MenuUpdate = Joi.object().keys({
     nivel: Joi.number().required(),
     father: Joi.any()
 });
-   
 
 module.exports = {
     MenuCreate,
