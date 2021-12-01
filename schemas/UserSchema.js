@@ -9,7 +9,6 @@ const UserSchema = Joi.object().keys({
 const UserUpdate = Joi.object().keys({
     _id: Joi.string().required(),
     email: Joi.string().required(),
-    password: Joi.string().required(),
     rol: Joi.string().required()
 })
     

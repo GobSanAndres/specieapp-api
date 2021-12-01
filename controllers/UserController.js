@@ -2,7 +2,7 @@ const { response, request } = require('express');
 const bcryptjs = require('bcryptjs');
 
 const User = require('../models/UsuarioModel');
-const { disableService, listService } = require('../utils/transversalService');
+const { disableService, listService, updateService } = require('../utils/transversalService');
 
 const list = async(req = request, res = response) => {
     listService(User, req, res);
@@ -46,28 +46,33 @@ const update =  async(req = request, res = response) => {
     try{
         const { _id, email, password, rol, ...resto } = req.body;
 
-        const salt = bcryptjs.genSaltSync();
-        resto.password = bcryptjs.hashSync(password, salt);
+        if(password){
+            const salt = bcryptjs.genSaltSync();
+            resto.password = bcryptjs.hashSync(password, salt);
 
-        const update = { ... req.body, password: resto.password};
+            const update = { ... req.body, password: resto.password};
 
-        User.findByIdAndUpdate(_id, update,
-            (error) => {
-                if(error)
-                    return res.status(400).json({
-                        statusCode: 400,
-                        success: false,
-                        error
-                    })
-                else
-                    return res.json({
-                        statusCode: 200,
-                        success: true,
-                        message: "Actualización exitosa"
-                    })
-            }
+            User.findByIdAndUpdate(_id, update,
+                (error) => {
+                    if(error)
+                        return res.status(400).json({
+                            statusCode: 400,
+                            success: false,
+                            error
+                        })
+                    else
+                        return res.json({
+                            statusCode: 200,
+                            success: true,
+                            message: "Actualización exitosa"
+                        })
+                }
+            
+            );
+        }else
+            updateService(User, req, res);
+
         
-        );
     }catch(error){
         return res.status(400).json({
             statusCode: 400,
