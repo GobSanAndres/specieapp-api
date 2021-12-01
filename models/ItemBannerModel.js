@@ -23,6 +23,11 @@ const ItemBannerSchema = Schema(
             type: Object,
             required: false
         },
+        order: {
+            type: Number,
+            required: false,
+            enum: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        },
         is_active: {
             type: Boolean,
             required: false,
