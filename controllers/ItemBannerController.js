@@ -3,7 +3,7 @@ var cloudinary = require('cloudinary').v2;
 
 const Data = require("../models/ItemBannerModel");
 
-const {  listService, disableService } = require("../utils/transversalService");
+const {  listService, disableService, updateService } = require("../utils/transversalService");
 
 const extImage = ['image/jpeg', 'image/png'];
 
@@ -72,31 +72,35 @@ const update = async(req = request, res = response) => {
 
     const data = await Data.findById(id);
 
+    if(data == undefined || data == null)
+        return res.status(400).json({
+            success: false,
+            error: "No Data"
+        })
+
     const publicId =  data.data_provider.public_id;
-    
-    if(publicId){
+
+    if(req.files){
+      if(publicId){
         cloudinary.uploader.destroy(publicId)
-        .then((resp) => {
-           console.log(resp);
-            if(req.files){
-                updateWithFile(req, res);
-            }else
+            .then((resp) => {
+                console.log(resp);
+                updateWithFile(req, res)
+            })
+            .catch(error => {
+                console.log("error ", error);
                 return res.status(400).json({
                     success: false,
-                    error: "Falta imagen"
+                    error
                 })
-            
-        })
-        .catch(error => {
-            console.log("error ", error);
-            return res.status(400).json({
-                success: false,
-                error
             })
-        })
-    }else{
-        updateWithFile(req, res);
-    }
+        }else{
+            updateWithFile(req, res);
+        }  
+    }else
+        updateService(Data, req, res);
+    
+    
     
     //updateService(Data, req, res);
 }
