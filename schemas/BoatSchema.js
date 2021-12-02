@@ -11,5 +11,6 @@ const BoatUpdate = Joi.object().keys({
 
 
 module.exports = {
-    BoatCreate
+    BoatCreate,
+    BoatUpdate
 }

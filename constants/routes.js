@@ -62,6 +62,14 @@ const routes = [
     {
         path: "/v1/api/boat",
         route: require("../routes/BoatRoutes")
+    },
+    {
+        path: "/v1/api/measurement",
+        route: require("../routes/MeasurementRoutes")
+    },
+    {
+        path: "/v1/api/activitie",
+        route: require("../routes/ActivitiesRoutes")
     }
 ];
 
