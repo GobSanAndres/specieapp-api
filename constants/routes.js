@@ -38,6 +38,38 @@ const routes = [
     {
         path: "/v1/api/menu",
         route: require("../routes/MenuRoutes")
+    },
+    {
+        path: "/v1/api/species",
+        route: require("../routes/SpeciesRoutes")
+    },
+    {
+        path: "/v1/api/fishing-art",
+        route: require("../routes/FishingArtRoutes")
+    },
+    {
+        path: "/v1/api/fishing-method",
+        route: require("../routes/FishingMethodRoutes")
+    },
+    {
+        path: "/v1/api/propulsion-method",
+        route: require("../routes/PropulsionMethodRoutes")
+    },
+    {
+        path: "/v1/api/fishing-area",
+        route: require("../routes/FishingAreaRoutes")
+    },
+    {
+        path: "/v1/api/boat",
+        route: require("../routes/BoatRoutes")
+    },
+    {
+        path: "/v1/api/measurement",
+        route: require("../routes/MeasurementRoutes")
+    },
+    {
+        path: "/v1/api/activitie",
+        route: require("../routes/ActivitiesRoutes")
     }
 ];
 
