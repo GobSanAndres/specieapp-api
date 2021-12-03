@@ -43,7 +43,7 @@ const MeasurementSchema = Schema(
         },
         record_id: {
             type: Number,
-            required: true
+            required: false
         },
         species: [MeasuredEspeciesSchema],
         is_active: {

@@ -70,6 +70,14 @@ const routes = [
     {
         path: "/v1/api/activitie",
         route: require("../routes/ActivitiesRoutes")
+    },
+    {
+        path: "/v1/api/fishing-technique",
+        route: require("../routes/FishingTechniqueRoutes")
+    },
+    {
+        path: "/v1/api/monitoring",
+        route: require("../routes/MonitoringRoutes")
     }
 ];
 
