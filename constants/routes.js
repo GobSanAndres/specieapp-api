@@ -78,6 +78,22 @@ const routes = [
     {
         path: "/v1/api/monitoring",
         route: require("../routes/MonitoringRoutes")
+    },
+    {
+        path: "/v1/api/module",
+        route: require("../routes/ModuleRoutes")
+    },
+    {
+        path: "/v1/api/form-available",
+        route: require("../routes/FormAvailableRoutes")
+    },
+    {
+        path: "/v1/api/section-form",
+        route: require("../routes/SectionFormRoutes")
+    },
+    {
+        path: "/v1/api/question-form",
+        route: require("../routes/QuestionFormRoutes")
     }
 ];
 
