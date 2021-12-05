@@ -13,7 +13,7 @@ const validTokenApp = async(req = request, res = response, next) => {
     }
 
     try{
-        const validToken = bycryptjs.compareSync(token, process.env.SECRET_APP);
+        const validToken = bycryptjs.compareSync(process.env.SECRET_APP, token);
 
         console.log("secret ", process.env.SECRET_APP);
         console.log("validToken ", validToken);
