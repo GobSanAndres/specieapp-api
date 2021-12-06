@@ -22,11 +22,11 @@ const QuestionFormSchema = Schema(
             required: true
         },
         data: [{ type: dataSchema, require: false }],
-        widget_type: {
+        widget: {
             type: String,
             required: true
         },
-        datatype: {
+        dataType: {
             type: String,
             required: true
         },

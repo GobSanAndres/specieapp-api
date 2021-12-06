@@ -68,6 +68,10 @@ const routes = [
         route: require("../routes/MeasurementRoutes")
     },
     {
+        path: "/v1/api/measured-species",
+        route: require("../routes/MeasuredSpeciesRoutes")
+    },
+    {
         path: "/v1/api/activitie",
         route: require("../routes/ActivitiesRoutes")
     },
@@ -78,6 +82,10 @@ const routes = [
     {
         path: "/v1/api/monitoring",
         route: require("../routes/MonitoringRoutes")
+    },
+    {
+        path: "/v1/api/item-operation",
+        route: require("../routes/ItemOperationRoutes")
     },
     {
         path: "/v1/api/module",

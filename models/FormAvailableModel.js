@@ -5,6 +5,18 @@ const FormAvailableSchema = Schema({
         type: String,
         required: true
     },
+    code: {
+        type: String,
+        required: true
+    },
+    version: {
+        type: Number,
+        required: true
+    },
+    approvalDate: {
+        type: Date,
+        required: true
+    },
     module: {
         required: true,
         type: Schema.Types.ObjectId,

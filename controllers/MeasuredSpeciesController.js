@@ -1,6 +1,6 @@
 const { response, request } = require("express");
 
-const Data = require("../models/MonitoringModel");
+const Data = require("../models/MeasuredSpeciesModel");
 
 const {  listService, disableService, updateService, createService } = require("../utils/transversalService");
 
@@ -18,7 +18,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    listService(Data, req, res, "fishing_art");
+    listService(Data, req, res, "measurement");
 }
 
 module.exports = {

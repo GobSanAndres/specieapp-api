@@ -1,21 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-const OperationItemsSchema  = Schema({
-    description: {
-        type: String,
-        required: true
-    },
-    unit: [{ type: String, require: true }],
-    value: {
-        type: Number,
-        required: true
-    },
-    form_id: {
-        type: Number,
-        required: true
-    },
-});
-
 const MonitoringSchema = Schema(
     {
         site: {
@@ -80,7 +64,6 @@ const MonitoringSchema = Schema(
             type: Number,
             required: true
         },
-        operating_expense: [OperationItemsSchema],
         catch_landed: {
             type: String,
             required: true
