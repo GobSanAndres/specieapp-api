@@ -2,7 +2,7 @@ const { response, request } = require("express");
 
 const Data = require("../models/FormAvailableModel");
 
-const {  listService, disableService, updateService, createService } = require("../utils/transversalService");
+const { listService, disableService, updateService, createService } = require("../utils/transversalService");
 
 
 const create = (req = request, res = response) => {
@@ -18,7 +18,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    listService(Data, req, res, null);
+    listService(Data, req, res, "module");
 }
 
 module.exports = {
