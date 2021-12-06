@@ -1,7 +1,9 @@
 const Joi = require('joi');
 
 const QuestionFormCreate = Joi.object().keys({
+    nameQuestion: Joi.string().required(),
     description: Joi.string().required(),
+    data: Joi.array(),
     widget_type: Joi.string().required(),
     datatype: Joi.string().required(),
     required: Joi.boolean().required(),
@@ -13,7 +15,9 @@ const QuestionFormCreate = Joi.object().keys({
 
 const QuestionFormUpdate = Joi.object().keys({
     _id: Joi.string().required(),
+    nameQuestion: Joi.string().required(),
     description: Joi.string().required(),
+    data: Joi.any().required(),
     widget_type: Joi.string().required(),
     datatype: Joi.string().required(),
     required: Joi.boolean().required(),

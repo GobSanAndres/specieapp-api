@@ -1,11 +1,27 @@
 const { Schema, model } = require('mongoose');
 
+const dataSchema  = Schema({
+    idData: {
+        type: String,
+        required: true
+    },
+    descriptionData: {
+        type: String,
+        required: true
+    }
+});
+
 const QuestionFormSchema = Schema(
     {
+        nameQuestion: {
+            type: String,
+            required: true
+        },
         description: {
             type: String,
             required: true
         },
+        data: [{ type: dataSchema, require: false }],
         widget_type: {
             type: String,
             required: true
