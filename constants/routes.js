@@ -68,8 +68,40 @@ const routes = [
         route: require("../routes/MeasurementRoutes")
     },
     {
+        path: "/v1/api/measured-species",
+        route: require("../routes/MeasuredSpeciesRoutes")
+    },
+    {
         path: "/v1/api/activitie",
         route: require("../routes/ActivitiesRoutes")
+    },
+    {
+        path: "/v1/api/fishing-technique",
+        route: require("../routes/FishingTechniqueRoutes")
+    },
+    {
+        path: "/v1/api/monitoring",
+        route: require("../routes/MonitoringRoutes")
+    },
+    {
+        path: "/v1/api/item-operation",
+        route: require("../routes/ItemOperationRoutes")
+    },
+    {
+        path: "/v1/api/module",
+        route: require("../routes/ModuleRoutes")
+    },
+    {
+        path: "/v1/api/form-available",
+        route: require("../routes/FormAvailableRoutes")
+    },
+    {
+        path: "/v1/api/section-form",
+        route: require("../routes/SectionFormRoutes")
+    },
+    {
+        path: "/v1/api/question-form",
+        route: require("../routes/QuestionFormRoutes")
     }
 ];
 
