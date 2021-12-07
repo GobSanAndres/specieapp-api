@@ -2,6 +2,10 @@ const { Schema, model } = require('mongoose');
 
 const ModuleSchema = Schema(
     {
+        code: {
+            type: Number,
+            required: true
+        },
         description: {
             type: String,
             required: true

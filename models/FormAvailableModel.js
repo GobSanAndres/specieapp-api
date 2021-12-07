@@ -10,7 +10,7 @@ const FormAvailableSchema = Schema({
         required: true
     },
     version: {
-        type: Number,
+        type: String,
         required: true
     },
     approvalDate: {
