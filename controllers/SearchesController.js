@@ -12,45 +12,60 @@ const getSearch = async(req, res = response) => {
     const since = Number(req.query.since) || 0;
     const limit = Number(req.query.limit) || 0;
 
+    if (isNaN(search)) {
+        return res.status(400).json({
+            ok: false,
+            msg: 'Error con los parámetros de la consulta'
+        });
+    }
+
     let module = [];
     let availableForms = [];
     let sectionForms = [];
+    let questionForms = [];
 
     let idOfTheForms = [];
+    let sectionsId = [];
 
     switch (table) {
         case 'module':
-            const moduleResult = await Module.find({ code: search })
-                                                    .sort({ date: -1 })
-                                                    .skip(since)
-                                                    .limit(limit);
-
-            module = moduleResult;                                       
-
-            if( moduleResult.length > 0 ){
-                const resultAvailableForms = await FormAvailable.find({ module: moduleResult[0]._id })
+            module = await Module.find({ $and: [{ code: search }, { is_active: true }] })
                 .sort({ date: -1 })
-                .populate('module')
                 .skip(since)
                 .limit(limit);
 
-                for (let i = 0; i < resultAvailableForms.length; i++) { 
-                    idOfTheForms.push(resultAvailableForms[i]._id);
-                }
-
-                availableForms = resultAvailableForms;
-
-                if( resultAvailableForms.length > 0 ){
-                    const resultSectionForms = await SectionForm.find({ form_available: { $in: idOfTheForms } })
+            if (module.length > 0) {
+                availableForms = await FormAvailable.find({ $and: [{ module: module[0]._id }, { is_active: true }] })
                     .sort({ date: -1 })
-                    .populate('form_available')
+                    .populate('module')
                     .skip(since)
                     .limit(limit);
-    
-                    sectionForms = resultSectionForms;
+
+                for (let i = 0; i < availableForms.length; i++) {
+                    idOfTheForms.push(availableForms[i]._id);
+                }
+
+                if (availableForms.length > 0) {
+                    sectionForms = await SectionForm.find({ $and: [{ form_available: { $in: idOfTheForms } }, { is_active: true }] })
+                        .sort({ date: -1 })
+                        .populate('form_available')
+                        .skip(since)
+                        .limit(limit);
+
+                    for (let i = 0; i < sectionForms.length; i++) {
+                        sectionsId.push(sectionForms[i]._id);
+                    }
+
+                    if (sectionForms.length > 0) {
+                        questionForms = await QuestionForm.find({ $and: [{ section_form: { $in: sectionsId } }, { is_active: true }] })
+                            .sort({ date: -1 })
+                            .populate('section_form')
+                            .skip(since)
+                            .limit(limit);
+                    }
                 }
             }
-            
+
             break;
 
         default:
@@ -64,7 +79,8 @@ const getSearch = async(req, res = response) => {
         ok: true,
         module,
         availableForms,
-        sectionForms
+        sectionForms,
+        questionForms
     });
 
 };
