@@ -1,8 +1,8 @@
 const { response, request } = require("express");
 
-const Data = require("../models/FishingZoneModel");
+const Data = require("../models/VersionModel");
 
-const { listService, disableService, updateService, createService } = require("../utils/transversalService");
+const {  listService, disableService, updateService, createService } = require("../utils/transversalService");
 
 
 const create = (req = request, res = response) => {

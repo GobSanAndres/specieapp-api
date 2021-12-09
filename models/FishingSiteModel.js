@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const  FishingZoneSchema = Schema(
+const  FishingSiteSchema = Schema(
     {
         description: {
             type: String,
@@ -17,4 +17,4 @@ const  FishingZoneSchema = Schema(
     }
 );
 
-module.exports = model('FishingZone', FishingZoneSchema);
+module.exports = model('FishingSite', FishingSiteSchema);
