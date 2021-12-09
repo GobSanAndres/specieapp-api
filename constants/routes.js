@@ -102,6 +102,18 @@ const routes = [
     {
         path: "/v1/api/question-form",
         route: require("../routes/QuestionFormRoutes")
+    },
+    {
+        path: "/v1/api/fishing-site",
+        route: require("../routes/FishingSiteRoutes")
+    },
+    {
+        path: "/v1/api/search",
+        route: require("../routes/SearchesRoutes")
+    },
+    {
+        path: "/v1/api/version",
+        route: require("../routes/VersionRoutes")
     }
 ];
 
