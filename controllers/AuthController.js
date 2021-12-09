@@ -35,10 +35,14 @@ const Auth = async(req = request, res = response) => {
         
         const token = await generateJWT(user.id);
 
-        res.json({
+        res.status(200).json({
             statusCode: 200,
             success: true,
-            token
+            token,
+            user: {
+                id: user._id,
+                email: user.email
+            }
         });
     }catch(error){
         return res.status(400).json({
