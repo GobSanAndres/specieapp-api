@@ -116,8 +116,8 @@ const routes = [
         route: require("../routes/VersionRoutes")
     },
     {
-        path: "/v1/api/save-data",
-        route: require("../routes/SaveDataRoutes")
+        path: "/v1/api/generic",
+        route: require("../routes/GenericRoutes")
     }
 ];
 
