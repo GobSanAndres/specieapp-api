@@ -16,7 +16,8 @@ const MonitoringCreate = Joi.object().keys({
     observations: Joi.string().required(),
     days: Joi.number().required(),
     days_and_nigth: Joi.number().required(),
-    catch_landed: Joi.any().required(),
+    operating_expenses: Joi.array().required(),
+    landed_catch: Joi.array().required(),
 });
 
 const MonitoringUpdate = Joi.object().keys({
@@ -34,7 +35,8 @@ const MonitoringUpdate = Joi.object().keys({
     observations: Joi.string().required(),
     days: Joi.number().required(),
     days_and_nigth: Joi.number().required(),
-    catch_landed: Joi.any().required(),
+    operating_expenses: Joi.array().required(),
+    landed_catch: Joi.array().required(),
 });
 
 module.exports = {
