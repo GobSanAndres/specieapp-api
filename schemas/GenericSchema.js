@@ -5,6 +5,11 @@ const GenericDisable = Joi.object().keys({
     is_active: Joi.boolean().required()
 });
 
+const GenericDataSave = Joi.object().keys({
+    idFormulario: Joi.string().required()
+});
+
 module.exports = {
-    GenericDisable
+    GenericDisable,
+    GenericDataSave
 }

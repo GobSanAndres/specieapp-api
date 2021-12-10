@@ -50,7 +50,8 @@ const MonitoringSchema = Schema(
             required: true
         },
         create_by: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
             required: true
         },
         departure_date: {
@@ -105,6 +106,10 @@ const MonitoringSchema = Schema(
         },
         operating_expenses: [{ type: ItemOperationSchema, require: true }],
         landed_catch: [{ type: LandedCatchSchema, require: true }],
+        issue_date: {
+            type: String,//epoch
+            required: true
+        },
         is_active: {
             type: Boolean,
             required: true,

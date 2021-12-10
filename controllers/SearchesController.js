@@ -39,7 +39,7 @@ const getSearch = async(req, res = response) => {
                         });
         
                     const object = {
-                        idFormulario: element._id,
+                        idFormulario: element.code,
                         nameSurvey: element.description,
                         sections
                     }

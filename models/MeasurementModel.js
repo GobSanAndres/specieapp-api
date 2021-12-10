@@ -34,7 +34,8 @@ const MeasurementSchema = Schema(
             required: true
         },
         create_by: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
             required: true
         },
         art: {
@@ -46,6 +47,10 @@ const MeasurementSchema = Schema(
             required: false
         },
         measured_species: [{ type: MeasuredSpeciesSchema, require: true }],
+        issue_date: {
+            type: String,//epoch
+            required: true
+        },
         is_active: {
             type: Boolean,
             required: true,

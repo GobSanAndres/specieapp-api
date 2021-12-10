@@ -100,10 +100,6 @@ const routes = [
         route: require("../routes/FishingSiteRoutes")
     },
     {
-        path: "/v1/api/search",
-        route: require("../routes/SearchesRoutes")
-    },
-    {
         path: "/v1/api/version",
         route: require("../routes/VersionRoutes")
     },
