@@ -7,7 +7,8 @@ const ActivitiesSchema = Schema(
             required: true
         },
         create_by: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
             required: true
         },
         art: {
@@ -20,6 +21,10 @@ const ActivitiesSchema = Schema(
         },
         samples: {
             type: Number,
+            required: true
+        },
+        issue_date: {
+            type: String,//epoch
             required: true
         },
         is_active: {

@@ -13,7 +13,6 @@ const listService = async(Data, req, res, isPopulate, isPopulate2) => {
             populate = "";
         }
         
-        console.log(populate2);
         if(isPopulate2 == null){
             populate2 = "";
         }

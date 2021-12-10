@@ -1,4 +1,7 @@
 const { response, request } = require("express");
+const { message } = require("../constants/response");
+const { sendDataResponse, internalError, badRequestError } = require("../utils/response");
+
 const Boat = require("../models/BoatModel");
 const Species = require("../models/SpeciesModel");
 const FishingArea = require("../models/FishingAreaModel");
@@ -6,6 +9,8 @@ const FishingArt = require("../models/FishingArtModel");
 const FishingMethod = require("../models/FishingMethodModel");
 const Propulsion = require("../models/PropulsionMethodModel");
 const FishingSite = require("../models/FishingSiteModel");
+
+const { GenericSave } = require("../constants/generic");
 
 const getData = async (req = request, res = response) => {
     try{
@@ -39,8 +44,33 @@ const getData = async (req = request, res = response) => {
 
 }
 
+const saveData = (req = request, res = response) => {
+    try{
+        const requestBody = req.body;
+
+        const ModelGeneric = GenericSave[requestBody.idFormulario];
+        
+        if(ModelGeneric != undefined){
+            const data = new ModelGeneric(requestBody);
+
+            data.save(function(error, saved){
+                if(error)
+                    badRequestError(res, error);
+                else
+                    sendDataResponse(res, message.create, { _id: saved._id });
+            })
+        }else
+            badRequestError(res, error);
+        
+
+    }catch(error){
+        internalError(res, error);
+    }
+}
+
 module.exports = {
-    getData
+    getData,
+    saveData
 }
 
 

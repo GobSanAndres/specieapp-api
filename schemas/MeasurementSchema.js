@@ -5,7 +5,9 @@ const MeasurementCreate = Joi.object().keys({
     zone: Joi.string().required(),
     create_by: Joi.string().required(),
     art: Joi.string().required(),
-    record_id: Joi.number()
+    record_id: Joi.number(),
+    measured_species: Joi.array().required(),
+    issue_date: Joi.string().required()
 });
 
 const MeasuremenUpdate = Joi.object().keys({
@@ -14,7 +16,9 @@ const MeasuremenUpdate = Joi.object().keys({
     zone: Joi.string().required(),
     create_by: Joi.string().required(),
     art: Joi.string().required(),
-    record_id: Joi.number()
+    record_id: Joi.number(),
+    measured_species: Joi.array().required(),
+    issue_date: Joi.string().required()
 });
 
 module.exports = {

@@ -1,5 +1,28 @@
 const { Schema, model } = require('mongoose');
 
+const MeasuredSpeciesSchema  = Schema({
+    specie: {
+        type: String,
+        required: true
+    },
+    width: {
+        type: Number,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        required: true
+    },
+    status: {
+        type: String,
+        required: true
+    },
+    weight: {
+        type: Number,
+        required: true
+    },
+});
+
 const MeasurementSchema = Schema(
     {
         site: {
@@ -11,7 +34,8 @@ const MeasurementSchema = Schema(
             required: true
         },
         create_by: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
             required: true
         },
         art: {
@@ -21,6 +45,11 @@ const MeasurementSchema = Schema(
         record_id: {
             type: Number,
             required: false
+        },
+        measured_species: [{ type: MeasuredSpeciesSchema, require: true }],
+        issue_date: {
+            type: String,//epoch
+            required: true
         },
         is_active: {
             type: Boolean,

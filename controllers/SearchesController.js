@@ -8,7 +8,7 @@ const QuestionForm = require('../models/QuestionFormModel');
 const getSearch = async(req, res = response) => {
 
     const module = await Module.find({is_active: true});
-    const availableForms = await FormAvailable.find({ is_active: true })
+    const availableForms = await FormAvailable.find({ is_active: true });
     const sectionForms = await SectionForm.find({ is_active: true });
     const questionForms = await QuestionForm.find({ is_active: true });
 
@@ -17,7 +17,6 @@ const getSearch = async(req, res = response) => {
     if(module.length > 0)
         module.forEach(element => {
         
-            //console.log(availableForms);
             const form = availableForms.filter(item => item.module.toString() == element._id.toString());
             let forms = [];
             
@@ -38,11 +37,9 @@ const getSearch = async(req, res = response) => {
                             };
                             sections.push(object)
                         });
-                    
-        
         
                     const object = {
-                        idFormulario: element._id,
+                        idFormulario: element.code,
                         nameSurvey: element.description,
                         sections
                     }
@@ -57,16 +54,6 @@ const getSearch = async(req, res = response) => {
             }
             modules.push(object);
         });
-    
-
-    /**
-     * 
-     * 
-     
-     */
-
-
-
 
     res.json({
         ok: true,
@@ -74,7 +61,6 @@ const getSearch = async(req, res = response) => {
     });
 
 };
-
 
 module.exports = {
     getSearch

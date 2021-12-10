@@ -1,5 +1,44 @@
 const { Schema, model } = require('mongoose');
 
+const ItemOperationSchema  = Schema({
+    description: {
+        type: String,
+        required: true
+    },
+    unit: [{ type: String, require: true }],
+    value: {
+        type: Number,
+        required: true
+    },
+    form_id: {
+        type: Number,
+        required: true
+    },
+});
+
+const LandedCatchSchema  = Schema({
+    specie: {
+        type: String,
+        required: true
+    },
+    width: {
+        type: Number,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        required: true
+    },
+    status: {
+        type: String,
+        required: true
+    },
+    weight: {
+        type: Number,
+        required: true
+    },
+});
+
 const MonitoringSchema = Schema(
     {
         site: {
@@ -11,7 +50,8 @@ const MonitoringSchema = Schema(
             required: true
         },
         create_by: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
             required: true
         },
         departure_date: {
@@ -64,8 +104,10 @@ const MonitoringSchema = Schema(
             type: Number,
             required: true
         },
-        catch_landed: {
-            type: String,
+        operating_expenses: [{ type: ItemOperationSchema, require: true }],
+        landed_catch: [{ type: LandedCatchSchema, require: true }],
+        issue_date: {
+            type: String,//epoch
             required: true
         },
         is_active: {
