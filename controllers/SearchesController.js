@@ -45,20 +45,25 @@ const getSearch = async(req, res = response) => {
                     idOfTheForms.push(availableForms[i]._id);
                 }
 
-                // let availableForms2 = availableForms;
-                // let newAvailableForms  = availableForms2.map(function(num) {  
-              
-                //     if(num.formAvailables === undefined){
-                //         for(let i = 0; i < module.length; i++){
-                //             Object.defineProperty(num,'formAvailables',{value: module[i], writable: true });
-                //         }
-                //         console.log("No existe la propiedad formAvailables");
-                //     }
+                //Creamos la función
+                function addProperty(obj, data){
+                    return Object.defineProperty(obj,'sectionForms',{value: data});
+                }
 
-                //     return num;
-                // });
+                let newAvailableForms  = availableForms.map(function(num) {  
 
-                // console.log(newAvailableForms);
+                    // if(num.formAvailables === undefined){
+                    //     for(let i = 0; i < module.length; i++){
+                    //         addProperty(num, "Hola Mundo");
+                    //     }
+                    // }
+
+                    num.ejemplo = 'Hola Mundo';
+
+                    return num;
+                });
+
+                console.log(newAvailableForms);
 
                 if (availableForms.length > 0) {
                     sectionForms = await SectionForm.find({ $and: [{ form_available: { $in: idOfTheForms } }, { is_active: true }] })
