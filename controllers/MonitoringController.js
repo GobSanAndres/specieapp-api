@@ -19,7 +19,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    listService(Data, req, res, "fishing_art", "FishingTechnique");
+    listService(Data, req, res, "fishing_art", "fishing_technique");
 }
 
 module.exports = {

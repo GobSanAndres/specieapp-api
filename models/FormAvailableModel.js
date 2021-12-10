@@ -17,6 +17,10 @@ const FormAvailableSchema = Schema({
         type: Date,
         required: true
     },
+    format_code: {
+        type: String,
+        require: true
+    },
     module: {
         required: true,
         type: Schema.Types.ObjectId,

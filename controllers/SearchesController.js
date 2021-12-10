@@ -7,104 +7,60 @@ const QuestionForm = require('../models/QuestionFormModel');
 
 const getSearch = async(req, res = response) => {
 
-    const table = req.params.table;
-    const search = req.params.search;
-    const since = Number(req.query.since) || 0;
-    const limit = Number(req.query.limit) || 0;
+    const module = await Module.find({is_active: true});
+    const availableForms = await FormAvailable.find({ is_active: true });
+    const sectionForms = await SectionForm.find({ is_active: true });
+    const questionForms = await QuestionForm.find({ is_active: true });
 
-    if (isNaN(search)) {
-        return res.status(400).json({
-            ok: false,
-            msg: 'Error con los parámetros de la consulta'
-        });
-    }
-
-    let module = [];
-    let availableForms = [];
-    let sectionForms = [];
-    let questionForms = [];
-
-    let idOfTheForms = [];
-    let sectionsId = [];
-
-    switch (table) {
-        case 'module':
-            module = await Module.find({ $and: [{ code: search }, { is_active: true }] })
-                .sort({ date: -1 })
-                .skip(since)
-                .limit(limit);
-
-            if (module.length > 0) {
-                availableForms = await FormAvailable.find({ $and: [{ module: module[0]._id }, { is_active: true }] })
-                    .sort({ date: -1 })
-                    .populate('module')
-                    .skip(since)
-                    .limit(limit);
-
-                for (let i = 0; i < availableForms.length; i++) {
-                    idOfTheForms.push(availableForms[i]._id);
-                }
-
-                //Creamos la función
-                function addProperty(obj, data){
-                    return Object.defineProperty(obj,'sectionForms',{value: data});
-                }
-
-                let newAvailableForms  = availableForms.map(function(num) {  
-
-                    // if(num.formAvailables === undefined){
-                    //     for(let i = 0; i < module.length; i++){
-                    //         addProperty(num, "Hola Mundo");
-                    //     }
-                    // }
-
-                    num.ejemplo = 'Hola Mundo';
-
-                    return num;
+    let modules = [];
+    
+    if(module.length > 0)
+        module.forEach(element => {
+        
+            const form = availableForms.filter(item => item.module.toString() == element._id.toString());
+            let forms = [];
+            
+            if(form.length > 0)
+                form.forEach(element => {
+                    const section = sectionForms.filter(item => item.form_available.toString() == element._id.toString());
+        
+                    let sections = [];
+        
+                    if(section.length > 0)
+                        section.forEach(element => {
+                            const question = questionForms.filter(item => item.section_form.toString() == element._id.toString());
+            
+                            const object = {
+                                idSection: element._id,
+                                nameSection: element.description,
+                                question
+                            };
+                            sections.push(object)
+                        });
+        
+                    const object = {
+                        idFormulario: element._id,
+                        nameSurvey: element.description,
+                        sections
+                    }
+                    forms.push(object);
                 });
-
-                console.log(newAvailableForms);
-
-                if (availableForms.length > 0) {
-                    sectionForms = await SectionForm.find({ $and: [{ form_available: { $in: idOfTheForms } }, { is_active: true }] })
-                        .sort({ date: -1 })
-                        .populate('form_available')
-                        .skip(since)
-                        .limit(limit);
-
-                    for (let i = 0; i < sectionForms.length; i++) {
-                        sectionsId.push(sectionForms[i]._id);
-                    }
-
-                    if (sectionForms.length > 0) {
-                        questionForms = await QuestionForm.find({ $and: [{ section_form: { $in: sectionsId } }, { is_active: true }] })
-                            .sort({ date: -1 })
-                            .populate('section_form')
-                            .skip(since)
-                            .limit(limit);
-                    }
-                }
+            
+            
+            const object = {
+                idModule: element._id,
+                nameModule: element.description,
+                forms
             }
-
-            break;
-
-        default:
-            return res.status(400).json({
-                ok: false,
-                msg: 'Esta url no existe'
-            });
-    }
+            modules.push(object);
+        });
 
     res.json({
         ok: true,
-        module,
-        availableForms,
-        sectionForms,
-        questionForms
+        modules
     });
 
 };
-
 
 module.exports = {
     getSearch
