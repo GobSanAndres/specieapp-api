@@ -114,6 +114,10 @@ const routes = [
     {
         path: "/v1/api/version",
         route: require("../routes/VersionRoutes")
+    },
+    {
+        path: "/v1/api/generic",
+        route: require("../routes/GenericRoutes")
     }
 ];
 
