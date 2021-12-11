@@ -34,7 +34,7 @@ const MeasurementSchema = Schema(
             type: String,
             required: true
         },
-        measured_species: [{ type: MeasuredSpeciesSchema, require: true }],
+        measured_specie: [{ type: MeasuredSpeciesSchema, require: true }],
         issue_date: {
             type: String,//epoch
             required: true

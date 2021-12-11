@@ -21,7 +21,7 @@ const WeightCheckSchema = Schema(
             type: String,
             required: true
         },
-        motonave: {
+        motorShip: {
             type: String,
             required: true
         },
@@ -30,7 +30,7 @@ const WeightCheckSchema = Schema(
             ref: 'Usuario',
             required: true
         },
-        weight_check_species: [{ type: WeightCheckSpeciesSchema, require: true }],
+        weight_check_specie: [{ type: WeightCheckSpeciesSchema, require: true }],
         signatureRegister: {
             type: String,
             required: true

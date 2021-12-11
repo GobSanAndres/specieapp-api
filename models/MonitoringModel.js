@@ -21,10 +21,6 @@ const LandedCatchSchema  = Schema({
         type: String,
         required: true
     },
-    width: {
-        type: Number,
-        required: true
-    },
     quantity: {
         type: Number,
         required: true
@@ -92,19 +88,19 @@ const MonitoringSchema = Schema(
             type: Date,
             required: true
         },
-        observations: {
+        observation: {
             type: String,
             required: true
         },
-        days: {
+        day: {
             type: Number,
             required: true
         },
-        days_and_nigth: {
+        day_and_nigth: {
             type: Number,
             required: true
         },
-        operating_expenses: [{ type: ItemOperationSchema, require: true }],
+        operating_expense: [{ type: ItemOperationSchema, require: true }],
         landed_catch: [{ type: LandedCatchSchema, require: true }],
         issue_date: {
             type: String,//epoch

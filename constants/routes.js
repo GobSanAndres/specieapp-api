@@ -106,6 +106,10 @@ const routes = [
     {
         path: "/v1/api/generic",
         route: require("../routes/GenericRoutes")
+    },
+    {
+        path: "/v1/api/weight-check",
+        route: require("../routes/WeightCheckRoutes")
     }
 ];
 
