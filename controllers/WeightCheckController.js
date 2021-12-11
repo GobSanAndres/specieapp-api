@@ -1,6 +1,6 @@
 const { response, request } = require("express");
 
-const Data = require("../models/ActivitiesModel");
+const Data = require("../models/WeightCheckModel");
 
 const {  listService, disableService, updateService, createService } = require("../utils/transversalService");
 

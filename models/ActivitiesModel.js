@@ -15,16 +15,20 @@ const ActivitiesSchema = Schema(
             type: String,
             required: true
         },
-        actives: {
+        active: {
             type: Number,
             required: true
         },
-        samples: {
+        sample: {
             type: Number,
             required: true
         },
         issue_date: {
             type: String,//epoch
+            required: true
+        },
+        observation: {
+            type: String,
             required: true
         },
         is_active: {
