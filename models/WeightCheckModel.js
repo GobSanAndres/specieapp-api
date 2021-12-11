@@ -40,7 +40,7 @@ const WeightCheckSchema = Schema(
             required: true
         },
         issue_date: {
-            type: String,//epoch
+            type: Number,//epoch
             required: true
         },
         is_active: {

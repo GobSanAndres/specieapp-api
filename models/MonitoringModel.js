@@ -103,7 +103,7 @@ const MonitoringSchema = Schema(
         operating_expense: [{ type: ItemOperationSchema, require: true }],
         landed_catch: [{ type: LandedCatchSchema, require: true }],
         issue_date: {
-            type: String,//epoch
+            type: Number,//epoch
             required: true
         },
         is_active: {

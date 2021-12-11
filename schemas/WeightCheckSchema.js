@@ -7,7 +7,7 @@ const WeightCheckCreate = Joi.object().keys({
     weight_check_specie: Joi.array().required(),
     signatureRegister: Joi.string().required(),
     signatureInstitution: Joi.string().required(),
-    issue_date: Joi.string().required(),
+    issue_date: Joi.number().required(),
 });
 
 const WeightCheckUpdate = Joi.object().keys({
@@ -18,7 +18,7 @@ const WeightCheckUpdate = Joi.object().keys({
     weight_check_specie: Joi.array().required(),
     signatureRegister: Joi.string().required(),
     signatureInstitution: Joi.string().required(),
-    issue_date: Joi.string().required(),
+    issue_date: Joi.number().required(),
 });
 
 module.exports = {
