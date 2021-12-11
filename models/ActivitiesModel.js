@@ -27,6 +27,10 @@ const ActivitiesSchema = Schema(
             type: String,//epoch
             required: true
         },
+        observations: {
+            type: String,
+            required: true
+        },
         is_active: {
             type: Boolean,
             required: true,
