@@ -6,7 +6,7 @@ const ActivitiesCreate = Joi.object().keys({
     art: Joi.string().required(),
     active: Joi.number().required(),
     sample: Joi.number().required(),
-    issue_date: Joi.string().required(),
+    issue_date: Joi.number().required(),
     observation: Joi.string().required()
 });
 
@@ -17,7 +17,7 @@ const ActivitiesUpdate = Joi.object().keys({
     art: Joi.string().required(),
     active: Joi.number().required(),
     sample: Joi.number().required(),
-    issue_date: Joi.string().required(),
+    issue_date: Joi.number().required(),
     observation: Joi.string().required()
 });
 
