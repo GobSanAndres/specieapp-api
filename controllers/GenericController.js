@@ -11,6 +11,10 @@ const Propulsion = require("../models/PropulsionMethodModel");
 const FishingSite = require("../models/FishingSiteModel");
 
 const { GenericSave } = require("../constants/generic");
+const Activitie = require("../models/ActivitiesModel");
+const Measurement = require("../models/MeasurementModel");
+const Monitore = require("../models/MonitoringModel");
+const WeightCheck = require("../models/WeightCheckModel");
 
 const getData = async (req = request, res = response) => {
     try{
@@ -68,9 +72,49 @@ const saveData = (req = request, res = response) => {
     }
 }
 
+const historicByUser = (req = request, res = response) => {
+    try{
+        const requestBody = req.body;
+
+        const { idUser } = requestBody;
+
+        const activities = Activitie.find({is_active: true, create_by: idUser});
+        const measurement = Measurement.find({is_active: true, create_by: idUser});
+        const monitoring = Monitore.find({is_active: true, create_by: idUser});
+        const weightCheck = WeightCheck.find({is_active: true, create_by: idUser});
+        
+        res.status(200).json({
+            success: true,
+            message: "Consulta exitosa",
+            formats: [
+                {
+                    name: "Formato de actividades",
+                    data: activities
+                },
+                {
+                    name: "Formato de tallas",
+                    data: measurement
+                },
+                {
+                    name: "Formato de Monitoreo",
+                    data: monitoring
+                },
+                {
+                    name: "Formato de verificación de peso",
+                    data: weightCheck
+                }
+            ]
+        })
+
+    }catch(error){
+        internalError(res, error);
+    }
+}
+
 module.exports = {
     getData,
-    saveData
+    saveData,
+    historicByUser
 }
 
 

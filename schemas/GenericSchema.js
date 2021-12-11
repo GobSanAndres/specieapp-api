@@ -9,7 +9,14 @@ const GenericDataSave = Joi.object().keys({
     idFormulario: Joi.string().required()
 });
 
+const GenericHistoric = Joi.object().keys({
+    idUser: Joi.string().required()
+});
+
 module.exports = {
     GenericDisable,
-    GenericDataSave
+    GenericDataSave,
+    GenericHistoric
 }
+
+//idUser
