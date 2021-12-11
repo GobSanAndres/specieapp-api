@@ -5,7 +5,6 @@ const FormAvailableCreate = Joi.object().keys({
     code: Joi.string().required(),
     version: Joi.string().required(),
     approvalDate: Joi.date().required(),
-    format_code: Joi.string().required(),
     module: Joi.string().required()
 });
 
@@ -15,7 +14,6 @@ const FormAvailableUpdate = Joi.object().keys({
     code: Joi.string().required(),
     version: Joi.string().required(),
     approvalDate: Joi.date().required(),
-    format_code: Joi.string().required(),
     module: Joi.string().required()
 });
 

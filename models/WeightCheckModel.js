@@ -1,27 +1,27 @@
 const { Schema, model } = require('mongoose');
 
-const MeasuredSpeciesSchema  = Schema({
+const WeightCheckSpeciesSchema  = Schema({
     specie: {
         type: String,
         required: true
     },
-    longitud: {
+    state: {
         type: String,
         required: true
     },
-    frecuency: {
+    weight: {
         type: String,
         required: true
     }
 });
 
-const MeasurementSchema = Schema(
+const WeightCheckSchema = Schema(
     {
-        site: {
+        place: {
             type: String,
             required: true
         },
-        zone: {
+        motonave: {
             type: String,
             required: true
         },
@@ -30,11 +30,15 @@ const MeasurementSchema = Schema(
             ref: 'Usuario',
             required: true
         },
-        art: {
+        weight_check_species: [{ type: WeightCheckSpeciesSchema, require: true }],
+        signatureRegister: {
             type: String,
             required: true
         },
-        measured_species: [{ type: MeasuredSpeciesSchema, require: true }],
+        signatureInstitution: {
+            type: String,
+            required: true
+        },
         issue_date: {
             type: String,//epoch
             required: true
@@ -50,4 +54,4 @@ const MeasurementSchema = Schema(
     }
 );
 
-module.exports = model('Measurement', MeasurementSchema);
+module.exports = model('WeightCheck', WeightCheckSchema);

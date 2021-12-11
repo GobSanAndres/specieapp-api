@@ -11,6 +11,11 @@ const SectionFormSchema = Schema(
             type: Schema.Types.ObjectId,
             ref: 'FormAvailable'
         },
+        duplicate:{
+            type: Boolean,
+            required: false,
+            default: false
+        },
         is_active: {
             type: Boolean,
             required: true,
