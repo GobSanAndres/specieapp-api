@@ -24,7 +24,7 @@ const ActivitiesSchema = Schema(
             required: true
         },
         issue_date: {
-            type: String,//epoch
+            type: Number,//epoch
             required: true
         },
         observation: {
