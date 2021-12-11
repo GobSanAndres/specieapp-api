@@ -15,11 +15,11 @@ const ActivitiesSchema = Schema(
             type: String,
             required: true
         },
-        actives: {
+        active: {
             type: Number,
             required: true
         },
-        samples: {
+        sample: {
             type: Number,
             required: true
         },
@@ -27,7 +27,7 @@ const ActivitiesSchema = Schema(
             type: String,//epoch
             required: true
         },
-        observations: {
+        observation: {
             type: String,
             required: true
         },
