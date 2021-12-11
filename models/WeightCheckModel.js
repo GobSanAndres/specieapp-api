@@ -21,7 +21,7 @@ const WeightCheckSchema = Schema(
             type: String,
             required: true
         },
-        motonave: {
+        motorShip: {
             type: String,
             required: true
         },
