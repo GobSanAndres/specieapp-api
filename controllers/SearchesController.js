@@ -33,7 +33,9 @@ const getSearch = async(req, res = response) => {
                             const object = {
                                 idSection: element._id,
                                 nameSection: element.description,
-                                question
+                                question,
+                                duplicate: element.duplicate,
+                                nameQuestion: element.nameQuestion
                             };
                             sections.push(object)
                         });

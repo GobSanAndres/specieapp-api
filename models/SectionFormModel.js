@@ -16,6 +16,10 @@ const SectionFormSchema = Schema(
             required: false,
             default: false
         },
+        nameQuestion: {
+            type: String,
+            required: false
+        },
         is_active: {
             type: Boolean,
             required: true,
