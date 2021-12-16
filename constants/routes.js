@@ -110,6 +110,10 @@ const routes = [
     {
         path: "/v1/api/weight-check",
         route: require("../routes/WeightCheckRoutes")
+    },
+    {
+        path: "/v1/api/agricultural-producer-form",
+        route: require("../routes/AgriculturalProducerFormRoutes")
     }
 ];
 
