@@ -114,6 +114,10 @@ const routes = [
     {
         path: "/v1/api/agricultural-producer-form",
         route: require("../routes/AgriculturalProducerFormRoutes")
+    },
+    {
+        path: "/v1/api/crop",
+        route: require("../routes/CropRoutes")
     }
 ];
 

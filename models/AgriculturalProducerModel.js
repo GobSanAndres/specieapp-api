@@ -2,95 +2,95 @@ const { Schema, model } = require('mongoose');
 
 const LivestockInventorySchema  = Schema({
     total_bovine: {
-        type: Number,
+        type: String,
         required: true
     },
     bovine_1: {
-        type: Number,
+        type: String,
         required: true
     },
     bovine_2: {
-        type: Number,
+        type: String,
         required: true
     },
     bovine_3: {
-        type: Number,
+        type: String,
         required: true
     },
     bovine_4: {
-        type: Number,
+        type: String,
         required: true
     },
     total_pigs: {
-        type: Number,
+        type: String,
         required: true
     },
     total_birds: {
-        type: Number,
+        type: String,
         required: true
     },
     total_chicken: {
-        type: Number,
+        type: String,
         required: true
     },
     total_hen: {
-        type: Number,
+        type: String,
         required: true
     },
     total_sheep: {
-        type: Number,
+        type: String,
         required: true
     },
     total_goats: {
-        type: Number,
+        type: String,
         required: true
     },
     total_equines: {
-        type: Number,
+        type: String,
         required: true
     },
     milk: {
-        type: Number,
+        type: String,
         required: true
     },
     average_day_milk: {
-        type: Number,
+        type: String,
         required: true
     },
     last_six_months_milk: {
-        type: Number,
+        type: String,
         required: true
     },
     pig_meat: {
-        type: Number,
+        type: String,
         required: true
     },
     average_cicle_pig: {
-        type: Number,
+        type: String,
         required: true
     },
     last_six_months_pig: {
-        type: Number,
+        type: String,
         required: true
     },
     chicken_eggs: {
-        type: Number,
+        type: String,
         required: true
     },
     average_day_chicken: {
-        type: Number,
+        type: String,
         required: true
     },
     last_six_months_chicken: {
-        type: Number,
+        type: String,
         required: true
     },
     broilers: {
-        type: Number,
+        type: String,
         required: true
     },
     average_cicle_chicken: {
-        type: Number,
+        type: String,
         required: true
     },
 });
@@ -102,11 +102,11 @@ const CropsProducedSchema  = Schema({
         required: true
     },
     sown_area: {
-        type: Number,
+        type: String,
         required: true
     },
     harvest: {
-        type: Number,
+        type: String,
         required: true
     }
 });
@@ -118,9 +118,9 @@ const AgriculturalProducerFormSchema = Schema(
             required: true
         },
         kind_person: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1]
+            enum: ['0', '1']
         },
         gender: {
             type: String,
@@ -137,9 +137,9 @@ const AgriculturalProducerFormSchema = Schema(
             required: true
         },
         location: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2]
+            enum: ['0', '1', '2']
         },
         identification_type: {
             type: String,
@@ -150,39 +150,39 @@ const AgriculturalProducerFormSchema = Schema(
             required: true
         },
         principal_activity: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2, 3]
+            enum: ['0', '1', '2', '3']
         },
         self_consumption: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2, 3]
+            enum: ['0', '1', '2', '3']
         },
         income_generation: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2, 3]
+            enum: ['0', '1', '2', '3']
         },
         form_ternure: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2, 3]
+            enum: ['0', '1', '2', '3']
         },
         surface: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2, 3]
+            enum: ['0', '1', '2', '3']
         },
         water_resource: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2, 3]
+            enum: ['0', '1', '2', '3']
         },
         cultivation_system: {
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2, 3]
+            enum: ['0', '1', '2', '3']
         },
         crops_produced: [
             { 
