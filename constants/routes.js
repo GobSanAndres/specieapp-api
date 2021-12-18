@@ -118,6 +118,10 @@ const routes = [
     {
         path: "/v1/api/crop",
         route: require("../routes/CropRoutes")
+    },
+    {
+        path: "/v1/api/costs-and-income",
+        route: require("../routes/CostsAndIncomeRoutes")
     }
 ];
 
