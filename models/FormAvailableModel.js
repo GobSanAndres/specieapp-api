@@ -17,6 +17,12 @@ const FormAvailableSchema = Schema({
         type: Date,
         required: true
     },
+    category:{
+        type: String,
+        required: false,
+        enum: ['General', 'Artesanal', 'Industrial'],
+        default: 'General'
+    },
     module: {
         required: true,
         type: Schema.Types.ObjectId,
