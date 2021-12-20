@@ -43,6 +43,7 @@ const getSearch = async(req, res = response) => {
                     const object = {
                         idFormulario: element.code,
                         nameSurvey: element.description,
+                        category: element.category ? element.category : "General",
                         sections
                     }
                     forms.push(object);
