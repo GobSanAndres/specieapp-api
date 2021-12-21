@@ -20,11 +20,6 @@ const CultivationSalesSchema  = Schema({
         type: String,
         required: true
     },
-    duplicate:{
-        type: Boolean,
-        required: false,
-        default: false
-    },
     sale_quantity: {
         type: String,
         required: true
