@@ -51,11 +51,11 @@ const MonitoringSchema = Schema(
             required: true
         },
         departure_date: {
-            type: Date,
+            type: Number,
             required: true
         },
         arrival_date: {
-            type: Date,
+            type: Number,
             required: true
         },
         ship: {
@@ -81,11 +81,11 @@ const MonitoringSchema = Schema(
             required: true
         },
         departure_time: {
-            type: Date,
+            type: Number,
             required: true
         },
         arrival_time: {
-            type: Date,
+            type: Number,
             required: true
         },
         observation: {
