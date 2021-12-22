@@ -12,6 +12,7 @@ const IndustrialVesselInspectionCreate = Joi.object().keys({
     observations: Joi.string().required(),
     signatureRegister: Joi.string().required(),
     signatureCaptainOrRepresentative: Joi.string().required(),
+    issue_date: Joi.number().required()
 });
 
 const IndustrialVesselInspectionUpdate = Joi.object().keys({
@@ -27,6 +28,7 @@ const IndustrialVesselInspectionUpdate = Joi.object().keys({
     observations: Joi.string().required(),
     signatureRegister: Joi.string().required(),
     signatureCaptainOrRepresentative: Joi.string().required(),
+    issue_date: Joi.number().required()
 });
 
 module.exports = {
