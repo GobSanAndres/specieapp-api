@@ -62,6 +62,11 @@ const IncomeDifferentProductsSchema  = Schema({
 
 const CostsAndIncomeSchema = Schema(
     {
+        create_by: {
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
+            required: true
+        },
         propertyName: {
             type: String,
             required: true

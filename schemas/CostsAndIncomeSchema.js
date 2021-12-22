@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 const CostsAndIncomeCreate = Joi.object().keys({
+    create_by: Joi.string().required(),
     propertyName: Joi.string().required(),
     registryNumber: Joi.string().required(),
     personType: Joi.string().required(),
@@ -18,6 +19,7 @@ const CostsAndIncomeCreate = Joi.object().keys({
 
 const CostsAndIncomeUpdate = Joi.object().keys({
     _id: Joi.string().required(),
+    create_by: Joi.string().required(),
     propertyName: Joi.string().required(),
     registryNumber: Joi.string().required(),
     personType: Joi.string().required(),

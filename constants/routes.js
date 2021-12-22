@@ -126,6 +126,10 @@ const routes = [
     {
         path: "/v1/api/industrial-vessel-inspection",
         route: require("../routes/IndustrialVesselInspectionRoutes")
+    },
+    {
+        path: "/v1/api/monitoring-agricultural-prices",
+        route: require("../routes/MonitoringAgriculturalPricesRoutes")
     }
 ];
 
