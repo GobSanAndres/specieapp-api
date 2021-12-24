@@ -1,18 +1,29 @@
 const { Schema, model } = require('mongoose');
 
 const ItemOperationSchema  = Schema({
-    description: {
+    gasoline_oneday: {
         type: String,
-        required: true
+        required: false
     },
-    unit: [{ type: String, require: true }],
-    value: {
-        type: Number,
-        required: true
+    other_oneday: {
+        type: String,
+        required: false
     },
-    form_id: {
-        type: Number,
-        required: true
+    groceries_higherday: {
+        type: String,
+        required: false
+    },
+    ice_higherday: {
+        type: String,
+        required: false
+    },
+    gasoline_higherday: {
+        type: String,
+        required: false
+    },
+    bait_higherday: {
+        type: String,
+        required: false
     },
 });
 
@@ -21,18 +32,51 @@ const LandedCatchSchema  = Schema({
         type: String,
         required: true
     },
-    quantity: {
-        type: Number,
-        required: true
-    },
     status: {
         type: String,
         required: true
     },
-    weight: {
-        type: Number,
+    quantity: {
+        type: String,
         required: true
     },
+    weight: {
+        type: String,
+        required: true
+    },
+});
+
+const HandLineSchema  = Schema({
+    method: {
+        type: String,
+        required: true
+    },
+    hook: {
+        type: String,
+        required: true
+    }
+});
+
+const NasaSchema  = Schema({
+    type: {
+        type: String,
+        required: true
+    },
+    quantity: {
+        type: String,
+        required: true
+    }
+});
+
+const ReelSchema  = Schema({
+    quantity_reel: {
+        type: String,
+        required: true
+    },
+    quantity_hooks: {
+        type: String,
+        required: true
+    }
 });
 
 const MonitoringSchema = Schema(
@@ -58,26 +102,44 @@ const MonitoringSchema = Schema(
             type: Number,
             required: true
         },
-        ship: {
-            type: Number,
+        name_ship: {
+            type: String,
+            required: true
+        },
+        pr: {
+            type: Boolean,
+            required: true
+        },
+        type_motor: {
+            type: String,
+            required: true
+        },
+        quantity_motor:{
+            type: String,
+            required: true
+        },
+        power:{
+            type: String,
             required: true
         },
         fishermen_number: {
-            type: Number,
+            type: String,
             required: true
         },
-        fishing_art: {
-            required: true,
-            type: Schema.Types.ObjectId,
-            ref: 'FishingArt'
+        handLine:[{
+            type: HandLineSchema,
+            required: false
+        }],
+        nasa:[{
+            type: NasaSchema,
+            required: false
+        }],
+        reel:{
+            type: ReelSchema,
+            required: false
         },
-        fishing_technique: {
-            required: true,
-            type: Schema.Types.ObjectId,
-            ref: 'FishingTechnique'
-        },
-        value: {
-            type: Number,
+        diving: {
+            type: String,
             required: true
         },
         departure_time: {
@@ -88,20 +150,21 @@ const MonitoringSchema = Schema(
             type: Number,
             required: true
         },
+        schedule: {
+            type: Boolean,
+            required: true
+        },
+        landed_catch: [{ type: LandedCatchSchema, require: true }],
         observation: {
             type: String,
             required: true
         },
-        day: {
-            type: Number,
-            required: true
+        value_state: {
+            type: String,
+            required: true,
+            enum: ['E', 'N', 'F', 'D']
         },
-        day_and_nigth: {
-            type: Number,
-            required: true
-        },
-        operating_expense: [{ type: ItemOperationSchema, require: true }],
-        landed_catch: [{ type: LandedCatchSchema, require: true }],
+        operating_expense: { type: ItemOperationSchema, require: true },
         issue_date: {
             type: Number,//epoch
             required: true
