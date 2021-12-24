@@ -1,8 +1,7 @@
 const Joi = require('joi');
 
 const IndustrialVesselInspectionCreate = Joi.object().keys({
-    code: Joi.string().required(),
-    approval_date: Joi.number().required(),
+    pproval_date: Joi.number().required(),
     create_by: Joi.string().required(),
     general_information: Joi.object().required(),
     fishing_areas: Joi.array().required(),
@@ -17,7 +16,6 @@ const IndustrialVesselInspectionCreate = Joi.object().keys({
 
 const IndustrialVesselInspectionUpdate = Joi.object().keys({
     _id: Joi.string().required(),
-    code: Joi.string().required(),
     approval_date: Joi.number().required(),
     create_by: Joi.string().required(),
     general_information: Joi.object().required(),

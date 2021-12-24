@@ -120,6 +120,10 @@ const LobsterPotSchema = Schema({
         type: String,
         required: true
     },
+    number_nasa_perlingada:{
+        type: String,
+        required: true
+    },
     effort: {
         type: String,
         required: true
@@ -248,14 +252,14 @@ const ProductTransshipmentSchema = Schema({
 });
 
 const TransshipmentControlSchema = Schema({
-    brings_transshipment: {
+    brings_transshipment: [{
         type: BringsTransshipmentSchema,
         required: true
-    },
-    product_transshipment: {
+    }],
+    product_transshipment: [{
         type: ProductTransshipmentSchema,
         required: true
-    }
+    }]
 });
 
 const NumberSealsSchema = Schema({
@@ -280,10 +284,6 @@ const ControlSampleLobsterSchema = Schema({
 
 const IndustrialVesselInspectionSchema = Schema(
     {
-        code: {
-            type: String,
-            required: true
-        },
         approval_date: {
             type: Number,
             required: true
