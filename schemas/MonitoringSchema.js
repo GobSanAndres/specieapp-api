@@ -22,7 +22,7 @@ const MonitoringCreate = Joi.object().keys({
     landed_catch: Joi.array().required(),
     observation: Joi.string().required(),
     value_state: Joi.string().required(),
-    operating_expense: Joi.object().required(),
+    operating_expense: Joi.array().required(),
     issue_date: Joi.number().required()
 });
 
@@ -49,7 +49,7 @@ const MonitoringUpdate = Joi.object().keys({
     landed_catch: Joi.array().required(),
     observation: Joi.string().required(),
     value_state: Joi.string().required(),
-    operating_expense: Joi.object().required(),
+    operating_expense: Joi.array().required(),
     issue_date: Joi.number().required()
 });
 

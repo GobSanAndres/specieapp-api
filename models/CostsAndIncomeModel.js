@@ -50,11 +50,15 @@ const TotalProductSalesSchema  = Schema({
 });
 
 const IncomeDifferentProductsSchema  = Schema({
-    description: {
+    rental: {
         type: String,
         required: true
     },
-    different_income:{
+    rent:{
+        type: String,
+        required: true
+    },
+    other:{
         type: String,
         required: true
     },
@@ -67,37 +71,40 @@ const CostsAndIncomeSchema = Schema(
             ref: 'Usuario',
             required: true
         },
-        propertyName: {
+        registry_number: {
             type: String,
             required: true
         },
-        registryNumber: {
+        business_name_establishment: {
             type: String,
             required: true
         },
-        personType: {
+        person_type:{
             type: String,
-            required: true
+            required: true,
+            enum: ['natural', 'juridica']
         },
-        location: {
+        localization:{
             type: String,
-            required: true
+            required: true,
+            enum: ['1', '2', '3']
         },
         nit: {
             type: String,
             required: true
         },
-        productName: {
+        informant_name: {
             type: String,
             required: true
         },
-        gender: {
+        identification: {
             type: String,
             required: true
         },
-        identification_type: {
+        gender:{
             type: String,
-            required: true
+            required: true,
+            enum: ['M', 'F']
         },
         production_expenses: [{ type: ProductionExpensesSchema, require: true }],
         cultivation_sales: [{ type: CultivationSalesSchema, require: true }],
