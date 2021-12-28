@@ -1,23 +1,15 @@
 const { Schema, model } = require('mongoose');
 
-const PriceRecordStructureSchema  = Schema({
-    description: {
+const Product = Schema({
+    name: {
         type: String,
         required: true
     },
-    price: {
+    price:{
         type: String,
         required: true
-    },
-});
-
-const AgriculturalProductSchema  = Schema({
-    vegetables_and_fruit: [{ type: PriceRecordStructureSchema, require: true }],
-    tubers_roots_and_bananas: [{ type: PriceRecordStructureSchema, require: true }],
-    processed_products: [{ type: PriceRecordStructureSchema, require: true }],
-    grains_and_cereals: [{ type: PriceRecordStructureSchema, require: true }],
-    meats_eggs_and_dairy: [{ type: PriceRecordStructureSchema, require: true }]
-});
+    }
+})
 
 const MonitoringAgriculturalPricesSchema = Schema(
     {
@@ -37,18 +29,14 @@ const MonitoringAgriculturalPricesSchema = Schema(
         person_type:{
             type: String,
             required: true,
-            enum: ['Persona natural', 'Persona jurídica']
+            enum: ['natural', 'juridica']
         },
         localization:{
             type: String,
             required: true,
-            enum: ['San andrés', 'Providencia', 'Santa catalina']
+            enum: ['1', '2', '3']
         },
         nit: {
-            type: String,
-            required: true
-        },
-        identification_informant: {
             type: String,
             required: true
         },
@@ -60,10 +48,27 @@ const MonitoringAgriculturalPricesSchema = Schema(
             type: String,
             required: true
         },
-        registration_of_price_of_agricultural_product: {
-            type: AgriculturalProductSchema,
-            required: true
+        gender:{
+            type: String,
+            required: true,
+            enum: ['M', 'F']
         },
+        vegetables: [{
+            type: Product,
+            required: true
+        }],
+        tubers: [{
+            type: Product,
+            required: true
+        }],
+        grains: [{
+            type: Product,
+            required: true
+        }],
+        meats: [{
+            type: Product,
+            required: true
+        }],
         issue_date: {
             type: Number,//epoch
             required: true

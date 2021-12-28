@@ -7,11 +7,14 @@ const MonitoringAgriculturalPricesCreate = Joi.object().keys({
     person_type: Joi.string().required(),
     localization: Joi.string().required(),
     nit: Joi.string().required(),
-    identification_informant: Joi.string().required(),
     informant_name: Joi.string().required(),
     identification: Joi.string().required(),
-    registration_of_price_of_agricultural_product: Joi.object().required(),
-    issue_date: Joi.number().required(),
+    gender: Joi.string().required(),
+    vegetables: Joi.array().required(),
+    tubers: Joi.array().required(),
+    grains: Joi.array().required(),
+    meats: Joi.array().required(),
+    issue_date: Joi.number().required()
 });
 
 const MonitoringAgriculturalPricesUpdate = Joi.object().keys({
@@ -22,11 +25,14 @@ const MonitoringAgriculturalPricesUpdate = Joi.object().keys({
     person_type: Joi.string().required(),
     localization: Joi.string().required(),
     nit: Joi.string().required(),
-    identification_informant: Joi.string().required(),
     informant_name: Joi.string().required(),
     identification: Joi.string().required(),
-    registration_of_price_of_agricultural_product: Joi.object().required(),
-    issue_date: Joi.number().required(),
+    gender: Joi.string().required(),
+    vegetables: Joi.array().required(),
+    tubers: Joi.array().required(),
+    grains: Joi.array().required(),
+    meats: Joi.array().required(),
+    issue_date: Joi.number().required()
 });
 
 module.exports = {

@@ -164,7 +164,7 @@ const MonitoringSchema = Schema(
             required: true,
             enum: ['E', 'N', 'F', 'D']
         },
-        operating_expense: { type: ItemOperationSchema, require: true },
+        operating_expense: [{ type: ItemOperationSchema, require: true }],
         issue_date: {
             type: Number,//epoch
             required: true

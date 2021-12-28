@@ -97,8 +97,7 @@ const LivestockInventorySchema  = Schema({
 
 const CropsProducedSchema  = Schema({
     crop: {
-        type: Schema.Types.ObjectId,
-        ref: 'Cultivo',
+        type: String,
         required: true
     },
     sown_area: {
@@ -111,43 +110,66 @@ const CropsProducedSchema  = Schema({
     }
 });
 
+const Surface = Schema({
+    size:{
+        type: String,
+        required: true
+    },
+    land:{
+        type: String,
+        required: true
+    },
+    pasture:{
+        type: String,
+        required: true
+    },
+    forest:{
+        type: String,
+        required: true
+    }
+})
+
 const AgriculturalProducerFormSchema = Schema(
     {
-        register_number: {
-            type: String,
-            required: true
-        },
-        kind_person: {
-            type: String,
-            required: true,
-            enum: ['0', '1']
-        },
-        gender: {
-            type: String,
-            required: true,
-            enum: ['M','F']
-        },
         create_by: {
             type: Schema.Types.ObjectId,
             ref: 'Usuario',
             required: true
         },
+        registry_number: {
+            type: String,
+            required: true
+        },
+        business_name_establishment: {
+            type: String,
+            required: true
+        },
+        person_type:{
+            type: String,
+            required: true,
+            enum: ['natural', 'juridica']
+        },
+        localization:{
+            type: String,
+            required: true,
+            enum: ['1', '2', '3']
+        },
         nit: {
             type: String,
             required: true
         },
-        location: {
+        informant_name: {
+            type: String,
+            required: true
+        },
+        identification: {
+            type: String,
+            required: true
+        },
+        gender:{
             type: String,
             required: true,
-            enum: ['0', '1', '2']
-        },
-        identification_type: {
-            type: String,
-            required: true
-        },
-        property_name: {
-            type: String,
-            required: true
+            enum: ['M', 'F']
         },
         principal_activity: {
             type: String,
@@ -169,11 +191,10 @@ const AgriculturalProducerFormSchema = Schema(
             required: true,
             enum: ['0', '1', '2', '3']
         },
-        surface: {
-            type: String,
-            required: true,
-            enum: ['0', '1', '2', '3']
-        },
+        surface: [{
+            type: Surface,
+            required: true
+        }],
         water_resource: {
             type: String,
             required: true,
@@ -190,10 +211,10 @@ const AgriculturalProducerFormSchema = Schema(
                 required: true
             }
         ],
-        livestock_inventory: {
+        livestock_inventory: [{
             type: LivestockInventorySchema,
             require: true
-        },
+        }],
         issue_date: {
             type: Number,//epoch
             required: true
