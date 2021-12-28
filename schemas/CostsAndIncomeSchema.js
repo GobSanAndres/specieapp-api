@@ -19,6 +19,7 @@ const CostsAndIncomeCreate = Joi.object().keys({
 
 const CostsAndIncomeUpdate = Joi.object().keys({
     _id: Joi.string().required(),
+    create_by: Joi.string().required(),
     registry_number: Joi.string().required(),
     business_name_establishment: Joi.string().required(),
     person_type: Joi.string().required(),
