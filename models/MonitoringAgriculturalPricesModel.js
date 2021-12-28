@@ -48,11 +48,6 @@ const MonitoringAgriculturalPricesSchema = Schema(
             type: String,
             required: true
         },
-        gender:{
-            type: String,
-            required: true,
-            enum: ['M', 'F']
-        },
         vegetables: [{
             type: Product,
             required: true
@@ -66,6 +61,10 @@ const MonitoringAgriculturalPricesSchema = Schema(
             required: true
         }],
         meats: [{
+            type: Product,
+            required: true
+        }],
+        processed_products: [{
             type: Product,
             required: true
         }],

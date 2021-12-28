@@ -81,6 +81,10 @@ const ReelSchema  = Schema({
 
 const MonitoringSchema = Schema(
     {
+        registry_number: {
+            type: String,
+            required: true
+        },
         site: {
             type: String,
             required: true
@@ -88,6 +92,11 @@ const MonitoringSchema = Schema(
         zone: {
             type: String,
             required: true
+        },
+        isle: {
+            type: String,
+            required: true,
+            enum: ['SAI', 'PVA']
         },
         create_by: {
             type: Schema.Types.ObjectId,
@@ -134,10 +143,10 @@ const MonitoringSchema = Schema(
             type: NasaSchema,
             required: false
         }],
-        reel:{
+        reel:[{
             type: ReelSchema,
             required: false
-        },
+        }],
         diving: {
             type: String,
             required: true
