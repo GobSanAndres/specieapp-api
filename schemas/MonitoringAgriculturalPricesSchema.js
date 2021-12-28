@@ -9,11 +9,11 @@ const MonitoringAgriculturalPricesCreate = Joi.object().keys({
     nit: Joi.string().required(),
     informant_name: Joi.string().required(),
     identification: Joi.string().required(),
-    gender: Joi.string().required(),
     vegetables: Joi.array().required(),
     tubers: Joi.array().required(),
     grains: Joi.array().required(),
     meats: Joi.array().required(),
+    processed_products: Joi.array().required(),
     issue_date: Joi.number().required()
 });
 
@@ -27,11 +27,11 @@ const MonitoringAgriculturalPricesUpdate = Joi.object().keys({
     nit: Joi.string().required(),
     informant_name: Joi.string().required(),
     identification: Joi.string().required(),
-    gender: Joi.string().required(),
     vegetables: Joi.array().required(),
     tubers: Joi.array().required(),
     grains: Joi.array().required(),
     meats: Joi.array().required(),
+    processed_products: Joi.array().required(),
     issue_date: Joi.number().required()
 });
 

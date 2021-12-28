@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 const MonitoringCreate = Joi.object().keys({
+    registry_number: Joi.string().required(),
     site: Joi.string().required(),
     zone: Joi.string().required(),
     create_by: Joi.string().required(),
@@ -14,7 +15,7 @@ const MonitoringCreate = Joi.object().keys({
     fishermen_number: Joi.string().required(),
     handLine: Joi.array().required(),
     nasa: Joi.array().required(),
-    reel: Joi.object().required(),
+    reel: Joi.array().required(),
     diving: Joi.string().required(),
     departure_time: Joi.number().required(),
     arrival_time: Joi.number().required(),
@@ -28,6 +29,7 @@ const MonitoringCreate = Joi.object().keys({
 
 const MonitoringUpdate = Joi.object().keys({
     _id: Joi.string().required(),
+    registry_number: Joi.string().required(),
     site: Joi.string().required(),
     zone: Joi.string().required(),
     create_by: Joi.string().required(),
@@ -41,7 +43,7 @@ const MonitoringUpdate = Joi.object().keys({
     fishermen_number: Joi.string().required(),
     handLine: Joi.array().required(),
     nasa: Joi.array().required(),
-    reel: Joi.object().required(),
+    reel: Joi.array().required(),
     diving: Joi.string().required(),
     departure_time: Joi.number().required(),
     arrival_time: Joi.number().required(),
