@@ -39,6 +39,29 @@ const ReelSchema = Schema({
     }
 });
 
+const LongLineSchema = Schema({
+    sets_number_perday: {
+        type: String,
+        required: true
+    },
+    sets_number: {
+        type: String,
+        required: true
+    },
+    sets_hook_type: {
+        type: String,
+        required: true
+    },
+    sets_hook_gauge: {
+        type: String,
+        required: true
+    },
+    sets_effort_hook_perday: {
+        type: String,
+        required: true
+    },
+})
+
 const TransshipmentControlSchema = Schema({
     product:{
         type: String,
@@ -202,26 +225,7 @@ const IndustrialVesselInspectionSchema = Schema(
             required: true,
             enum: ['Pelagico', 'Demersal', 'Tiburoreno']
         },
-        sets_number_perday: {
-            type: String,
-            required: true
-        },
-        sets_number: {
-            type: String,
-            required: true
-        },
-        sets_hook_type: {
-            type: String,
-            required: true
-        },
-        sets_hook_gauge: {
-            type: String,
-            required: true
-        },
-        sets_effort_hook_perday: {
-            type: String,
-            required: true
-        },
+        longLine:[{ type: LongLineSchema, require: true }],
         reel: [{ type: ReelSchema, require: true }],
         //
         transshipment_control: [{
