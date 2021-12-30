@@ -37,6 +37,7 @@ const IndustrialVesselInspectionCreate = Joi.object().keys({
     transshipment_product_control: Joi.array().required(),
     control_total_bags_landed: Joi.string().required(),
     control_total_sealed_bags: Joi.string().required(),
+    number_seals: Joi.string().required(),
     observations: Joi.string().required(),
     signatureRegister: Joi.string().required(),
     signatureCaptainOrRepresentative: Joi.string().required(),
@@ -45,7 +46,6 @@ const IndustrialVesselInspectionCreate = Joi.object().keys({
 
 const IndustrialVesselInspectionUpdate = Joi.object().keys({
     _id: Joi.string().required(),
-    create_by: Joi.string().required(),
     register_number: Joi.string().required(),
     type_fishshop: Joi.string().required(),
     landing_site: Joi.string().required(),
@@ -81,6 +81,7 @@ const IndustrialVesselInspectionUpdate = Joi.object().keys({
     transshipment_product_control: Joi.array().required(),
     control_total_bags_landed: Joi.string().required(),
     control_total_sealed_bags: Joi.string().required(),
+    number_seals: Joi.string().required(),
     observations: Joi.string().required(),
     signatureRegister: Joi.string().required(),
     signatureCaptainOrRepresentative: Joi.string().required(),
