@@ -35,7 +35,7 @@ const IndustrialVesselInspectionCreate = Joi.object().keys({
     transshipment_product_control: Joi.array().required(),
     control_total_bags_landed: Joi.string().required(),
     control_total_sealed_bags: Joi.string().required(),
-    observations: Joi.array().required(),
+    observations: Joi.string().required(),
     signatureRegister: Joi.string().required(),
     signatureCaptainOrRepresentative: Joi.string().required(),
     issue_date: Joi.number().required()
@@ -77,7 +77,7 @@ const IndustrialVesselInspectionUpdate = Joi.object().keys({
     transshipment_product_control: Joi.array().required(),
     control_total_bags_landed: Joi.string().required(),
     control_total_sealed_bags: Joi.string().required(),
-    observations: Joi.array().required(),
+    observations: Joi.string().required(),
     signatureRegister: Joi.string().required(),
     signatureCaptainOrRepresentative: Joi.string().required(),
     issue_date: Joi.number().required()
