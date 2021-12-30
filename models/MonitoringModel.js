@@ -46,7 +46,7 @@ const LandedCatchSchema  = Schema({
     },
 });
 
-const HandLineSchema  = Schema({
+/* const HandLineSchema  = Schema({
     method: {
         type: String,
         required: true
@@ -77,7 +77,7 @@ const ReelSchema  = Schema({
         type: String,
         required: true
     }
-});
+}); */
 
 const MonitoringSchema = Schema(
     {
@@ -135,18 +135,22 @@ const MonitoringSchema = Schema(
             type: String,
             required: true
         },
-        handLine:[{
-            type: HandLineSchema,
+        handLine:{
+            type: Array,
             required: false
-        }],
-        nasa:[{
-            type: NasaSchema,
+        },
+        nasa:{
+            type: String,
             required: false
-        }],
-        reel:[{
-            type: ReelSchema,
+        },
+        reel_num:{
+            type: String,
             required: false
-        }],
+        },
+        hook_num:{
+            type: String,
+            required: false
+        },
         diving: {
             type: String,
             required: true
