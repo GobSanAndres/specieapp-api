@@ -9,12 +9,14 @@ const FishingArt = require("../models/FishingArtModel");
 const FishingMethod = require("../models/FishingMethodModel");
 const Propulsion = require("../models/PropulsionMethodModel");
 const FishingSite = require("../models/FishingSiteModel");
+const CropModel = require("../models/CropModel");
 
 const { GenericSave } = require("../constants/generic");
 const Activitie = require("../models/ActivitiesModel");
 const Measurement = require("../models/MeasurementModel");
 const Monitore = require("../models/MonitoringModel");
 const WeightCheck = require("../models/WeightCheckModel");
+
 
 const getData = async (req = request, res = response) => {
     try{
@@ -25,6 +27,7 @@ const getData = async (req = request, res = response) => {
         const methods = await FishingMethod.find({is_active: true});
         const propulsions = await Propulsion.find({is_active: true});
         const sites = await FishingSite.find({is_active: true});
+        const crops = await CropModel.find({is_active: true});
 
         res.status(200).json({
             success: true,
@@ -35,7 +38,8 @@ const getData = async (req = request, res = response) => {
             arts,
             methods,
             propulsions,
-            sites
+            sites,
+            crops
         })
             
             
