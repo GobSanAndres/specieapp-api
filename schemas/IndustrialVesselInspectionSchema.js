@@ -46,6 +46,7 @@ const IndustrialVesselInspectionCreate = Joi.object().keys({
 
 const IndustrialVesselInspectionUpdate = Joi.object().keys({
     _id: Joi.string().required(),
+    create_by: Joi.string().required(),
     register_number: Joi.string().required(),
     type_fishshop: Joi.string().required(),
     landing_site: Joi.string().required(),
