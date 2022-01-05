@@ -4,7 +4,8 @@ const SectionFormCreate = Joi.object().keys({
     description: Joi.string().required(),
     form_available: Joi.string().required(),
     duplicate: Joi.boolean(),
-    nameQuestion: Joi.string()
+    nameQuestion: Joi.string(),
+    moreOne: Joi.boolean()
 });
 
 const SectionFormUpdate = Joi.object().keys({
@@ -12,7 +13,8 @@ const SectionFormUpdate = Joi.object().keys({
     description: Joi.string().required(),
     form_available: Joi.string().required(),
     duplicate: Joi.boolean(),
-    nameQuestion: Joi.string()
+    nameQuestion: Joi.string(),
+    moreOne: Joi.boolean()
 });
 
 module.exports = {
