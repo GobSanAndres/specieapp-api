@@ -20,6 +20,11 @@ const SectionFormSchema = Schema(
             type: String,
             required: false
         },
+        moreOne: {
+            type: Boolean,
+            required: true,
+            default: true
+        },
         is_active: {
             type: Boolean,
             required: true,
