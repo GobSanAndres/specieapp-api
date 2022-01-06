@@ -35,7 +35,8 @@ const getSearch = async(req, res = response) => {
                                 nameSection: element.description,
                                 question,
                                 duplicate: element.duplicate,
-                                nameQuestion: element.nameQuestion
+                                nameQuestion: element.nameQuestion,
+                                moreOne: element.moreOne
                             };
                             sections.push(object)
                         });
