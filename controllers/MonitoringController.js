@@ -2,9 +2,7 @@ const { response, request } = require("express");
 
 const Data = require("../models/MonitoringModel");
 
-const { disableService, updateService, createService } = require("../utils/transversalService");
-const { listService } = require("../utils/otherServices");
-
+const { disableService, updateService, createService, listService } = require("../utils/transversalService");
 
 const create = (req = request, res = response) => {
     createService(Data, req, res);
@@ -19,7 +17,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    listService(Data, req, res, null);
+    listService(Data, req, res, {populate0: "create_by"});
 }
 
 module.exports = {

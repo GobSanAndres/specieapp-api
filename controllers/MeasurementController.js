@@ -18,7 +18,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    listService(Data, req, res, null);
+    listService(Data, req, res, {populate0: "create_by"});
 }
 
 module.exports = {

@@ -3,17 +3,38 @@ const { sendDataResponse, genericResponse, internalError, badRequestError } = re
 
 const listService = async(Data, req, res, isPopulate) => {
     try{
+        let aditionQuery = req.aditionalQuery;
+        if(typeof aditionQuery != "object"){
+            aditionQuery = {};
+        }
         const { limit = 10, from = 0, active } = req.query;
-        const query = { is_active: active != undefined ? active : true };
+        const query = { is_active: active != undefined ? active : true, ...aditionQuery };
 
-        let populate = isPopulate;
-        if(isPopulate == null)
-            populate = "";
-
+        const populate = {};
+        if(isPopulate == null || isPopulate == undefined || typeof isPopulate != "object")
+            for (let index = 0; index < 7; index++) {
+                populate[`populate${index}`] = "";
+                
+            }
+        else
+            for (let index = 0; index < 7; index++) {
+                if(isPopulate[`populate${index}`] == undefined)
+                    populate[`populate${index}`] = "";
+                else
+                    populate[`populate${index}`] = isPopulate[`populate${index}`]
+            }
+        
+        
         const [ total, items ] = await Promise.all([
             Data.countDocuments(query),
             Data.find(query)
-                .populate(populate)
+                .populate(populate.populate0)
+                .populate(populate.populate1)
+                .populate(populate.populate2)
+                .populate(populate.populate3)
+                .populate(populate.populate4)
+                .populate(populate.populate5)
+                .populate(populate.populate6)
                 .skip(Number(from))
                 .limit(Number(( limit )))
         ]);

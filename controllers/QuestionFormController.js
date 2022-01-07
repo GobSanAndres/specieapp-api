@@ -18,7 +18,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    listService(Data, req, res, "section_form");
+    listService(Data, req, res, { populate0: "section_form" });
 }
 
 module.exports = {

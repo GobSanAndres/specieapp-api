@@ -5,7 +5,7 @@ const User = require('../models/UsuarioModel');
 const { disableService, listService, updateService } = require('../utils/transversalService');
 
 const list = async(req = request, res = response) => {
-    listService(User, req, res);
+    listService(User, req, res, {populate0: "rol"});
 }
 
 const create = (req = request, res = response) => {

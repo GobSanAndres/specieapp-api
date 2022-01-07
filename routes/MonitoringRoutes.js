@@ -14,6 +14,6 @@ router.post("/update", [validJWT, validator(MonitoringUpdate)],update);
 
 router.post("/disable", [validJWT, validator(GenericDisable)], disable);
 
-router.get("/list", [validJWT], getAll);
+router.get("/list", getAll);
 
 module.exports = router;

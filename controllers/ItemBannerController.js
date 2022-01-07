@@ -110,7 +110,7 @@ const disable = (req = request, res = response) => {
 }
 
 const getAll = (req = request, res = response) => {
-    listService(Data, req, res, "banner_id");
+    listService(Data, req, res, { populate0: "banner_id" });
 }
 
 const updateWithFile = (req, res) => {
