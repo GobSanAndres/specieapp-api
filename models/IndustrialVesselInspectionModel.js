@@ -79,7 +79,7 @@ const TransshipmentControlSchema = Schema({
 
 const TransshipmentProductControlSchema = Schema({
     data:{
-        type: String,
+        type: Number,
         required: true
     },
     product:{
