@@ -5,6 +5,10 @@ const FormAvailable = require('../models/FormAvailableModel');
 const SectionForm = require('../models/SectionFormModel');
 const QuestionForm = require('../models/QuestionFormModel');
 
+const { sendDataResponse } = require("../utils/response");
+const { message } = require('../constants/response');
+const { Actions } = require('../constants/actionLogs');
+
 const getSearch = async(req, res = response) => {
 
     const module = await Module.find({is_active: true});
@@ -59,9 +63,10 @@ const getSearch = async(req, res = response) => {
             modules.push(object);
         });
 
-    res.json({
-        ok: true,
-        modules
+    sendDataResponse(res, message.list, { modules }, {
+        "Data": Module,
+        req,
+        action: Actions.list
     });
 
 };

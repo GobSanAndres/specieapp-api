@@ -7,7 +7,8 @@ const Actions = {
     create: 'Create',
     disable: 'Disable',
     enable: 'Enable',
-    auth: 'Login'
+    auth: 'Login',
+    changePassword: 'Change Password'
 }
 
 const Modules = {
