@@ -1,7 +1,9 @@
 const { message } = require("../constants/response");
 const { sendDataResponse, genericResponse, internalError, badRequestError } = require("../utils/response");
+const { Actions } = require("../constants/actionLogs");
 
 const listService = async(Data, req, res, isPopulate) => {
+    
     try{
         let aditionQuery = req.aditionalQuery;
         if(typeof aditionQuery != "object"){
@@ -38,9 +40,10 @@ const listService = async(Data, req, res, isPopulate) => {
                 .skip(Number(from))
                 .limit(Number(( limit )))
         ]);
-        sendDataResponse(res, message.list, { total, items });
+
+        sendDataResponse(res, message.list, { total, items }, { Data, req, action: Actions.list });
     }catch(error){
-        internalError(res, error);
+        internalError(res, error, { Data, req, action: Actions.list });
     }
     
 }
@@ -88,10 +91,9 @@ const reportServices = async(Data, req, res, isPopulate) => {
                 .skip(Number(from))
                 .limit(Number(( limit )))
         ]);
-        sendDataResponse(res, message.list, { total, items });
+        sendDataResponse(res, message.list, { total, items }, { Data, req, action: Actions.list });
     }catch(error){
-        console.log(error);
-        internalError(res, error);
+        internalError(res, error, { Data, req, action: Actions.list });
     }
     
 }
@@ -103,14 +105,14 @@ const disableService = (Data, req, res) => {
         Data.findByIdAndUpdate(id, { is_active: is_active},
             (error) => {
                 if(error)
-                    badRequestError(res, error);
+                    badRequestError(res, error, { Data, req, action: is_active ? Actions.enable : Actions.disable, object: `id: ${id}` });
                 else
-                    genericResponse(res, is_active ? message.update : message.disable);
+                    genericResponse(res, is_active ? message.update : message.disable, { Data, req, action: is_active ? Actions.enable : Actions.disable, object: `id: ${id}` });
             }
         )
 
     }catch(error){
-        internalError(res, error);
+        internalError(res, error, { Data, req, action: Actions.disable });
     }
 }
 
@@ -121,14 +123,14 @@ const updateService = (Data, req, res) => {
         Data.findByIdAndUpdate(update._id, update,
             (error) => {
                 if(error)
-                    badRequestError(res, error);
+                    badRequestError(res, error, { Data, req, action: Actions.update, object: `id: ${update._id} | body: ${update}` });
                 else
-                    genericResponse(res, message.update);
+                    genericResponse(res, message.update, { Data, req, action: Actions.update, object: `id: ${update._id} | body: ${update}` });
             }
         )
 
     }catch(error){
-        internalError(res, error);
+        internalError(res, error, { Data, req, action: Actions.update });
     }
 }
 
@@ -139,15 +141,17 @@ const createService = (Data, req, res) => {
 
         data.save(function(error, saved){
             if(error)
-                badRequestError(res, error);
+                badRequestError(res, error, { Data, req, action: Actions.create, object: `body: ${requestBody}` });
             else
-                sendDataResponse(res, message.create, { _id: saved._id });
+                sendDataResponse(res, message.create, { _id: saved._id }, { Data, req, action: Actions.create });
         })
 
     }catch(error){
-        internalError(res, error);
+        internalError(res, error, { Data, req, action: Actions.create });
     }
 }
+
+
 
 module.exports = {
     disableService,

@@ -2,54 +2,46 @@ const { response, request } = require("express");
 const bycryptjs = require('bcryptjs');
 
 const User = require("../models/UsuarioModel");
+const { Actions } = require("../constants/actionLogs");
+const { message } = require("../constants/response");
 
 const { generateJWT } = require("../helpers/generar-jwt");
+const { sendDataResponse, internalError, badRequestError } = require("../utils/response");
 
 const Auth = async(req = request, res = response) => {
     const { email, password } = req.body;
 
     try{
         const user = await User.findOne({email});
-        if(!user)
-            return res.status(400).json({
-                statusCode: 400,
-                success: false,
-                message: "Email invalido"
-            })
-        
-        if(!user.is_active)
-            return res.status(400).json({
-                statusCode: 400,
-                success: false,
-                message: "is_active invalido"
-            });
-        
+        if(!user){
+            badRequestError(res, message.authError.email, { "Data": User, req, action: Actions.auth, object: `Email: ${email}`, isAuth: true });
+            return
+        }
+        if(!user.is_active){
+            badRequestError(res, message.authError.noActive, { "Data": User, req, action: Actions.auth, object: `Email: ${email}`, isAuth: true });
+            return
+        }
         const validPassword = bycryptjs.compareSync(password, user.password);
 
-        if(!validPassword)
-            return res.status(400).json({
-                statusCode: 400,
-                success: false,
-                message: "Invalid Password"
-            });
-        
+        if(!validPassword){
+            badRequestError(res, message.authError.password, { "Data": User, req, action: Actions.auth, object: `Email: ${email}`, isAuth: true });
+            return
+        }
         const token = await generateJWT(user.id);
 
-        res.status(200).json({
+        const objectData = {
             statusCode: 200,
-            success: true,
             token,
             user: {
                 id: user._id,
                 email: user.email
             }
-        });
+        }
+
+        sendDataResponse(res, message.list, objectData, { "Data": User, req, action: Actions.auth, object: `Email: ${email}`, isAuth: true })        
+
     }catch(error){
-        return res.status(400).json({
-            statusCode: 400,
-            success: false,
-            error
-        })
+        internalError(res, error, { "Data": User, req, action: Actions.auth, isAuth: true });
     }
 }
 

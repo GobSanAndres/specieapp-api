@@ -3,6 +3,9 @@ const bcryptjs = require('bcryptjs');
 
 const User = require('../models/UsuarioModel');
 const { disableService, listService, updateService } = require('../utils/transversalService');
+const { message } = require('../constants/response');
+const { Actions } = require('../constants/actionLogs');
+const { badRequestError, sendDataResponse, genericResponse } = require('../utils/response');
 
 const list = async(req = request, res = response) => {
     listService(User, req, res, {populate0: "rol"});
@@ -19,25 +22,22 @@ const create = (req = request, res = response) => {
 
         usuario.save(function(error, saved){
             if(error)
-                return res.status(400).json({
-                    statusCode: 400,
-                    success: false,
-                    error
-                })
-            else
-                return res.json({
+                badRequestError(res, error, { "Data": User, req, action: Actions.create, object: `body: ${req.body}` });
+            else{
+                const objectData = {
                     statusCode: 200,
-                    success: true,
-                    message: "Registro creado exitosamente",
+                    message: message.create,
                     _id: saved._id
-                })
+                };
+                sendDataResponse(res, message.list, objectData, {
+                    "Data": User,
+                    req,
+                    action: Actions.list
+                });
+            }
         })
     }catch(error){
-        return res.status(400).json({
-            statusCode: 401,
-            success: false,
-            error
-        })
+        internalError(res, error, { "Data": User, req, action: Actions.create });
     }
 }
 
@@ -55,17 +55,9 @@ const update =  async(req = request, res = response) => {
             User.findByIdAndUpdate(_id, update,
                 (error) => {
                     if(error)
-                        return res.status(400).json({
-                            statusCode: 400,
-                            success: false,
-                            error
-                        })
+                        badRequestError(res, error, { "Data": User, req, action: Actions.update, object: `id: ${update._id} | body: ${update}` });
                     else
-                        return res.json({
-                            statusCode: 200,
-                            success: true,
-                            message: "Actualización exitosa"
-                        })
+                        genericResponse(res, message.update, { "Data": User, req, action: Actions.update, object: `id: ${update._id} | body: ${update}` });
                 }
             
             );
@@ -74,11 +66,7 @@ const update =  async(req = request, res = response) => {
 
         
     }catch(error){
-        return res.status(400).json({
-            statusCode: 400,
-            success: false,
-            error
-        })
+        internalError(res, error, { "Data": User, req, action: Actions.update });
     }
 }
 
@@ -87,28 +75,21 @@ const changePassword = async(req = request, res = response) => {
 
     try{
         const user = await User.findOne({email});
-        if(!user)
-            return res.status(400).json({
-                statusCode: 400,
-                success: false,
-                message: "Email invalido"
-            })
-        
-        if(!user.is_active)
-            return res.status(400).json({
-                statusCode: 400,
-                success: false,
-                message: "is_active invalido"
-            });
+        if(!user){
+            badRequestError(res, message.authError.email, { "Data": User, req, action: Actions.changePassword, object: `Email: ${email}` });
+            return
+        }
+        if(!user.is_active){
+            badRequestError(res, message.authError.noActive, { "Data": User, req, action: Actions.changePassword, object: `Email: ${email}`});
+            return
+        }
         
         const validPassword = bcryptjs.compareSync(currentPassword, user.password);
         
-        if(!validPassword)
-            return res.status(400).json({
-                statusCode: 400,
-                success: false,
-                message: "Invalid Password"
-            });
+        if(!validPassword){
+            badRequestError(res, message.authError.password, { "Data": User, req, action: Actions.changePassword, object: `Email: ${email}` });
+            return
+        }
         
         if(newPassword){
             const salt = bcryptjs.genSaltSync();
@@ -120,28 +101,28 @@ const changePassword = async(req = request, res = response) => {
             User.findByIdAndUpdate(user._id, update,
                 (error) => {
                     if(error)
-                        return res.status(400).json({
-                            statusCode: 400,
-                            success: false,
-                            error
-                        })
+                        badRequestError(res, error, 
+                            { 
+                                "Data": User, 
+                                req, 
+                                action: Actions.changePassword, 
+                                object: `id: ${user._id}` 
+                            });
                     else
-                        return res.json({
-                            statusCode: 200,
-                            success: true,
-                            message: "Actualización exitosa"
-                        })
+                        genericResponse(res, message.update, 
+                            { 
+                                "Data": User, 
+                                req, 
+                                action: Actions.changePassword, 
+                                object: `id: ${user._id}` 
+                            });
                 }
             
             );
         }
     
     }catch(error){
-        return res.status(400).json({
-            statusCode: 400,
-            success: false,
-            error
-        })
+        internalError(res, error, { "Data": User, req, action: Actions.changePassword });
     }
 }
 

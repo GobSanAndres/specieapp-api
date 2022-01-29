@@ -11,7 +11,12 @@ const message = {
     update: "Registro actualizado exitosamente",
     disable: "Registro deshabilitado exitosamente",
     enable: "Registro habilitado exitosamente",
-    list: "Consulta exitosa"
+    list: "Consulta exitosa",
+    authError:{
+        email: "Email invalido",
+        noActive: "is_active disabled",
+        password: "Invalid Password"
+    }
 }
 
 const typeError = {

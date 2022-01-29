@@ -16,6 +16,7 @@ const Activitie = require("../models/ActivitiesModel");
 const Measurement = require("../models/MeasurementModel");
 const Monitore = require("../models/MonitoringModel");
 const WeightCheck = require("../models/WeightCheckModel");
+const { Actions } = require("../constants/actionLogs");
 
 
 const getData = async (req = request, res = response) => {
@@ -29,9 +30,7 @@ const getData = async (req = request, res = response) => {
         const sites = await FishingSite.find({is_active: true});
         const crops = await CropModel.find({is_active: true});
 
-        res.status(200).json({
-            success: true,
-            message: "Consulta exitosa",
+        const objectData = {
             boats,
             species,
             areas,
@@ -40,14 +39,16 @@ const getData = async (req = request, res = response) => {
             propulsions,
             sites,
             crops
-        })
+        };
+        sendDataResponse(res, message.list, objectData, {
+            Data: { modelName: "Generic"},
+            req,
+            action: Actions.list
+        });
             
             
     }catch(error) {
-        return res.status(400).json({
-            success: false,
-            error
-        })
+        internalError(res, error, { Data: { modelName: "Generic"}, req, action: Actions.list });
     }
 
 }
@@ -63,16 +64,16 @@ const saveData = (req = request, res = response) => {
 
             data.save(function(error, saved){
                 if(error)
-                    badRequestError(res, error);
+                    badRequestError(res, error, { Data: ModelGeneric, req, action: Actions.create, object: `body: ${requestBody}` });
                 else
                     sendDataResponse(res, message.create, { _id: saved._id });
             })
         }else
-            badRequestError(res, error);
+            badRequestError(res, error, { Data: { modelName: "Generic"}, req, action: Actions.create, object: `body: ${requestBody}` });
         
 
     }catch(error){
-        internalError(res, error);
+        internalError(res, error, { Data: { modelName: "Generic"}, req, action: Actions.create });
     }
 }
 
@@ -87,9 +88,7 @@ const historicByUser = (req = request, res = response) => {
         const monitoring = Monitore.find({is_active: true, create_by: idUser});
         const weightCheck = WeightCheck.find({is_active: true, create_by: idUser});
         
-        res.status(200).json({
-            success: true,
-            message: "Consulta exitosa",
+        const objectData = {
             formats: [
                 {
                     name: "Formato de actividades",
@@ -108,10 +107,15 @@ const historicByUser = (req = request, res = response) => {
                     data: weightCheck
                 }
             ]
-        })
+        };
+        sendDataResponse(res, message.list, objectData, {
+            Data: { modelName: "Generic"},
+            req,
+            action: Actions.list
+        });
 
     }catch(error){
-        internalError(res, error);
+        internalError(res, error, { Data: { modelName: "Generic"}, req, action: Actions.list });
     }
 }
 
