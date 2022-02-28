@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 
 const User = require('../models/UsuarioModel');
 
+//Return verification of user
+
 const getUser = async (req =  request) => {
     try{
         const token = req.header('Authorization');
