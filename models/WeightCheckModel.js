@@ -18,11 +18,13 @@ const WeightCheckSpeciesSchema  = Schema({
 const WeightCheckSchema = Schema(
     {
         place: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'FishingSite',
             required: true
         },
         motorShip: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Boat',
             required: true
         },
         create_by: {

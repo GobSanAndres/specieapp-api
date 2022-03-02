@@ -120,7 +120,8 @@ const IndustrialVesselInspectionSchema = Schema(
             enum: ['caracol', 'langosta', 'blanca']
         },
         landing_site: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'FishingSite',
             required: true
         },
         arrival_date: {
@@ -132,7 +133,8 @@ const IndustrialVesselInspectionSchema = Schema(
             required: true
         },
         boat_name: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Boat',
             required: true
         },
         captain_name: {

@@ -86,11 +86,13 @@ const MonitoringSchema = Schema(
             required: true
         },
         site: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'FishingSite',
             required: true
         },
         zone: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'FishingArea',
             required: true
         },
         isle: {
@@ -112,7 +114,8 @@ const MonitoringSchema = Schema(
             required: true
         },
         name_ship: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Boat',
             required: true
         },
         pr: {
@@ -120,7 +123,8 @@ const MonitoringSchema = Schema(
             required: true
         },
         type_motor: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'PropulsionMethod',
             required: true
         },
         quantity_motor:{

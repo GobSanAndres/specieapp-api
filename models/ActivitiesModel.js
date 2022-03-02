@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const ActivitiesSchema = Schema(
     {
         site: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'FishingSite',
             required: true
         },
         create_by: {
@@ -12,7 +13,8 @@ const ActivitiesSchema = Schema(
             required: true
         },
         art: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'FishingArt',
             required: true
         },
         active: {
