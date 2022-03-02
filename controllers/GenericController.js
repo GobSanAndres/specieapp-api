@@ -66,7 +66,7 @@ const saveData = (req = request, res = response) => {
                 if(error)
                     badRequestError(res, error, { Data: ModelGeneric, req, action: Actions.create, object: `body: ${requestBody}` });
                 else
-                    sendDataResponse(res, message.create, { _id: saved._id });
+                    sendDataResponse(res, message.create, { _id: saved._id }, { Data: { modelName: "Generic"}, req, action: Actions.create, object: `body: ${requestBody}` });
             })
         }else
             badRequestError(res, error, { Data: { modelName: "Generic"}, req, action: Actions.create, object: `body: ${requestBody}` });
