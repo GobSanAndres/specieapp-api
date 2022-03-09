@@ -138,11 +138,13 @@ const IndustrialVesselInspectionSchema = Schema(
             required: true
         },
         captain_name: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
             required: true
         },
         permit_holder: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
             required: true
         },
         patent_number: {
@@ -154,7 +156,8 @@ const IndustrialVesselInspectionSchema = Schema(
             required: true
         },
         field_recorder: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: 'Usuario',
             required: true
         },
         number_fishermen_resident: {
