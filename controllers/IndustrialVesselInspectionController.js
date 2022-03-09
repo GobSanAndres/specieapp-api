@@ -22,7 +22,7 @@ const getAll = (req = request, res = response) => {
 }
 
 const getReport = (req = request, res = response) => {
-    reportServices(Data, req, res, {populate0: "create_by", populate0: "landing_site", populate0: "boat_name"});
+    reportServices(Data, req, res, {populate0: "create_by", populate1: "landing_site", populate2: "boat_name"});
 }
 
 module.exports = {
