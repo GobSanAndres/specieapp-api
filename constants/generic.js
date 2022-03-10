@@ -10,7 +10,7 @@ const MonitoringAgriculturalPrices = require("../models/MonitoringAgriculturalPr
 const GenericSave = {
     "FO-MI-DP-03": Activitie,
     "1500-63.04": Measurement,
-    "CAP-ES-PE-08": Monitore,
+    "FO-MI-DP-02": Monitore,
     "FO-MI-DP-07": WeightCheck,
     "FO-MI-DP-06": IndustrialVesselInspection,
     "ID-RE-AGRO-01": AgriculturalProducer,
