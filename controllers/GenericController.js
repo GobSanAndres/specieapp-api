@@ -56,6 +56,7 @@ const getData = async (req = request, res = response) => {
 const saveData = (req = request, res = response) => {
     try{
         const requestBody = req.body;
+        console.log(requestBody);
 
         const ModelGeneric = GenericSave[requestBody.idFormulario];
         
