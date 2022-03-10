@@ -63,13 +63,16 @@ const saveData = (req = request, res = response) => {
             const data = new ModelGeneric(requestBody);
 
             data.save(function(error, saved){
+                console.log(error);
                 if(error)
-                    badRequestError(res, error, { Data: ModelGeneric, req, action: Actions.create, object: `body: ${requestBody}` });
+                badRequestError(res, error, { Data: ModelGeneric, req, action: Actions.create, object: `body: ${requestBody}` });
                 else
-                    sendDataResponse(res, message.create, { _id: saved._id }, { Data: { modelName: "Generic"}, req, action: Actions.create, object: `body: ${requestBody}` });
+                sendDataResponse(res, message.create, { _id: saved._id }, { Data: { modelName: "Generic"}, req, action: Actions.create, object: `body: ${requestBody}` });
             })
-        }else
+        }else {  
+            console.log(error);
             badRequestError(res, error, { Data: { modelName: "Generic"}, req, action: Actions.create, object: `body: ${requestBody}` });
+        }
         
 
     }catch(error){
