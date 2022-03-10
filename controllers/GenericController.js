@@ -77,6 +77,7 @@ const saveData = (req = request, res = response) => {
         
 
     }catch(error){
+        console.log(error);
         internalError(res, error, { Data: { modelName: "Generic"}, req, action: Actions.create });
     }
 }
