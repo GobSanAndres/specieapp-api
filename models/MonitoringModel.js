@@ -123,8 +123,7 @@ const MonitoringSchema = Schema(
             required: true
         },
         type_motor: {
-            type: Schema.Types.ObjectId,
-            ref: 'PropulsionMethod',
+            type: String,
             required: true
         },
         quantity_motor:{
