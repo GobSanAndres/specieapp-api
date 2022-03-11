@@ -15,6 +15,8 @@ router.post("/app/create", [validTokenApp], saveData);
 
 router.get('/app/getdata', [validTokenApp], getSearch);
 
+router.get('/app/getdataAll', getSearch);
+
 router.get('/getdata', [validJWT], getSearch);
 
 router.get('/app/gethistoric', [validTokenApp, validator(GenericHistoric)], historicByUser);
