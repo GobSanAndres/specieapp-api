@@ -6,6 +6,10 @@ const  BoatSchema = Schema(
             type: String,
             required: false
         },
+        matricula: {
+            type: String,
+            required: true
+        },
         is_active: {
             type: Boolean,
             required: false,
