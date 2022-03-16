@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 
 
 const FishingAreasSchema = Schema({
@@ -112,7 +113,10 @@ const IndustrialVesselInspectionSchema = Schema(
         },
         register_number: {
             type: String,
-            required: true
+            required: true,
+            default: function() {
+                return uuidv4();
+            }
         },
         type_fishshop: {
             type: String,

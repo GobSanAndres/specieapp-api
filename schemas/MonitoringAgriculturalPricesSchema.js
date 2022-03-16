@@ -2,7 +2,6 @@ const Joi = require('joi');
 
 const MonitoringAgriculturalPricesCreate = Joi.object().keys({
     create_by: Joi.string().required(),
-    registry_number: Joi.string().required(),
     business_name_establishment: Joi.string().required(),
     person_type: Joi.string().required(),
     localization: Joi.string().required(),
@@ -20,7 +19,6 @@ const MonitoringAgriculturalPricesCreate = Joi.object().keys({
 const MonitoringAgriculturalPricesUpdate = Joi.object().keys({
     _id: Joi.string().required(),
     create_by: Joi.string().required(),
-    registry_number: Joi.string().required(),
     business_name_establishment: Joi.string().required(),
     person_type: Joi.string().required(),
     localization: Joi.string().required(),

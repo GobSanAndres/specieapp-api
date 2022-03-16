@@ -6,7 +6,7 @@ const  BoatSchema = Schema(
             type: String,
             required: false
         },
-        matricula: {
+        enrollment: {
             type: String,
             required: true
         },
