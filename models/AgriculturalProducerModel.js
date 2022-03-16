@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 
 const LivestockInventorySchema  = Schema({
     total_bovine: {
@@ -138,7 +139,10 @@ const AgriculturalProducerFormSchema = Schema(
         },
         registry_number: {
             type: String,
-            required: true
+            required: true,
+            default: function() {
+                return uuidv4();
+            }
         },
         business_name_establishment: {
             type: String,

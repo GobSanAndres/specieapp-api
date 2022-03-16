@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
+// registry_number: Joi.string().required(),
 const MonitoringCreate = Joi.object().keys({
-    registry_number: Joi.string().required(),
     site: Joi.string().required(),
     zone: Joi.string().required(),
     isle: Joi.string().required(),
@@ -31,7 +31,6 @@ const MonitoringCreate = Joi.object().keys({
 
 const MonitoringUpdate = Joi.object().keys({
     _id: Joi.string().required(),
-    registry_number: Joi.string().required(),
     site: Joi.string().required(),
     zone: Joi.string().required(),
     isle: Joi.string().required(),

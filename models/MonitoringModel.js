@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 
 const ItemOperationSchema  = Schema({
     gasoline_oneday: {
@@ -83,7 +84,10 @@ const MonitoringSchema = Schema(
     {
         registry_number: {
             type: String,
-            required: true
+            required: true,
+            default: function() {
+                return uuidv4();
+            }
         },
         site: {
             type: Schema.Types.ObjectId,
