@@ -34,7 +34,12 @@ const Auth = async(req = request, res = response) => {
             token,
             user: {
                 id: user._id,
-                email: user.email
+                email: user.email,
+                name: user.name,
+                surname: user.surname,
+                phone: user.phone,
+                identification: user.identification,
+                area: user.area
             }
         }
 
