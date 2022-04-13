@@ -26,7 +26,7 @@ const UsuarioSchema = Schema(
         area:{
             type: String,
             required: true,
-            enum: ['pesca', 'agro']
+            enum: ['pesca', 'agro', 'admin']
         },
         password:{
             type: String,
