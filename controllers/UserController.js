@@ -13,9 +13,9 @@ const list = async(req = request, res = response) => {
 
 const create = (req = request, res = response) => {
     try{
-        const { email, password, rol } = req.body;
+        const { email, name, surname, phone, identification, area, password, rol } = req.body;
 
-        const usuario = new User({ email, password, rol});
+        const usuario = new User({ email, name, surname, phone, identification, area, password, rol});
 
         const salt = bcryptjs.genSaltSync();
         usuario.password = bcryptjs.hashSync( password, salt);

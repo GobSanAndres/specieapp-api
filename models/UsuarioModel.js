@@ -7,6 +7,27 @@ const UsuarioSchema = Schema(
             required: true,
             unique: true
         },
+        name:{
+            type: String,
+            required: true
+        },
+        surname:{
+            type: String,
+            required: true
+        },
+        phone:{
+            type: Number,
+            required: true
+        },
+        identification:{
+            type: Number,
+            required: true
+        },
+        area:{
+            type: String,
+            required: true,
+            enum: ['pesca', 'agro']
+        },
         password:{
             type: String,
             required: true
