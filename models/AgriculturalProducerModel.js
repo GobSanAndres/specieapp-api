@@ -1,30 +1,131 @@
 const { Schema, model } = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
-const LivestockInventorySchema  = Schema({
-    total_bovine: {
+const CattleSchema = Schema({
+    total_cattle: {
         type: String,
         required: true
     },
-    bovine_1: {
+    number_of_female_cattle: {
         type: String,
         required: true
     },
-    bovine_2: {
+    number_of_male_cattle: {
         type: String,
         required: true
     },
-    bovine_3: {
+    number_females_0_to_6_months: {
         type: String,
         required: true
     },
-    bovine_4: {
+    number_females_6_to_12_months: {
         type: String,
         required: true
     },
+    number_females_12_to_24_months: {
+        type: String,
+        required: true
+    },
+    number_females_older_than_24_months: {
+        type: String,
+        required: true
+    },
+    number_males_0_to_6_months: {
+        type: String,
+        required: true
+    },
+    number_males_6_to_12_months: {
+        type: String,
+        required: true
+    },
+    number_males_12_to_24_months: {
+        type: String,
+        required: true
+    },
+    number_males_older_than_24_months: {
+        type: String,
+        required: true
+    },
+});
+
+const PigsSchema = Schema({
     total_pigs: {
         type: String,
         required: true
+    },
+    number_of_females: {
+        type: String,
+        required: true
+    },
+    number_of_males: {
+        type: String,
+        required: true
+    },
+    number_females_0_to_6_months: {
+        type: String,
+        required: true
+    },
+    number_females_6_to_12_months: {
+        type: String,
+        required: true
+    },
+    number_females_12_to_24_months: {
+        type: String,
+        required: true
+    },
+    number_females_older_than_24_months: {
+        type: String,
+        required: true
+    },
+    number_males_0_to_6_months: {
+        type: String,
+        required: true
+    },
+    number_males_6_to_12_months: {
+        type: String,
+        required: true
+    },
+    number_males_12_to_24_months: {
+        type: String,
+        required: true
+    },
+    number_males_older_than_24_months: {
+        type: String,
+        required: true
+    },
+});
+
+const BirdsSchema = Schema({
+    number_of_layers: {
+        type: String,
+        required: true
+    },
+    fattening_number: {
+        type: String,
+        required: true
+    },
+    dual_purpose_number: {
+        type: String,
+        required: true
+    },
+    number_of_roosters: {
+        type: String,
+        required: true
+    },
+});
+
+const LivestockInventorySchema  = Schema({
+    cattle: {
+        type: CattleSchema,
+        require: true
+    },
+    pigs: {
+        type: PigsSchema,
+        require: true
+    },
+    birds: {
+        type: BirdsSchema,
+        require: true
     },
     total_birds: {
         type: String,
