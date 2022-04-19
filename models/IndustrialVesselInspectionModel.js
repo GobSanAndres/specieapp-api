@@ -188,7 +188,7 @@ const IndustrialVesselInspectionSchema = Schema(
             type: String,
             required: true
         },
-        fishing_areas: [{ type: FishingAreasSchema, require: true }],
+        fishing_areas: [{ type: FishingAreasSchema, required: true }],
         diving_number_pangas_perday: {
             type: String,
             required: true
@@ -253,7 +253,7 @@ const IndustrialVesselInspectionSchema = Schema(
             type: String,
             required: true
         },
-        number_seals: [{ type: NumberSealsSchema, require: true }],
+        number_seals: [{ type: NumberSealsSchema, required: true }],
         observations: {
             type: String,
             required: true

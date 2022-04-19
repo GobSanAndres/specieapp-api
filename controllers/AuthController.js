@@ -12,7 +12,7 @@ const Auth = async(req = request, res = response) => {
     const { email, password } = req.body;
 
     try{
-        const user = await User.findOne({email});
+        const user = await User.findOne({email}).populate('rol');
         if(!user){
             badRequestError(res, message.authError.email, { "Data": User, req, action: Actions.auth, object: `Email: ${email}`, isAuth: true });
             return
@@ -39,7 +39,8 @@ const Auth = async(req = request, res = response) => {
                 surname: user.surname,
                 phone: user.phone,
                 identification: user.identification,
-                area: user.area
+                area: user.area,
+                rol: user.rol.code
             }
         }
 

@@ -32,7 +32,7 @@ const WeightCheckSchema = Schema(
             ref: 'Usuario',
             required: true
         },
-        weight_check_specie: [{ type: WeightCheckSpeciesSchema, require: true }],
+        weight_check_specie: [{ type: WeightCheckSpeciesSchema, required: true }],
         signatureRegister: {
             type: String,
             required: true
