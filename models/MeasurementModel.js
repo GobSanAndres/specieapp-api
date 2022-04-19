@@ -37,7 +37,7 @@ const MeasurementSchema = Schema(
             ref: 'FishingArt',
             required: true
         },
-        measured_specie: [{ type: MeasuredSpeciesSchema, require: true }],
+        measured_specie: [{ type: MeasuredSpeciesSchema, required: true }],
         issue_date: {
             type: Number,//epoch
             required: true

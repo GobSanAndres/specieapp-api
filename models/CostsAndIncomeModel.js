@@ -110,10 +110,10 @@ const CostsAndIncomeSchema = Schema(
             required: true,
             enum: ['M', 'F']
         },
-        production_expenses: [{ type: ProductionExpensesSchema, require: true }],
-        cultivation_sales: [{ type: CultivationSalesSchema, require: true }],
-        total_product_sales: [{ type: TotalProductSalesSchema, require: true }],
-        income_different_products: [{ type: IncomeDifferentProductsSchema, require: true }],
+        production_expenses: [{ type: ProductionExpensesSchema, required: true }],
+        cultivation_sales: [{ type: CultivationSalesSchema, required: true }],
+        total_product_sales: [{ type: TotalProductSalesSchema, required: true }],
+        income_different_products: [{ type: IncomeDifferentProductsSchema, required: true }],
         issue_date: {
             type: Number,//epoch
             required: true

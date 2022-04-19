@@ -115,18 +115,6 @@ const BirdsSchema = Schema({
 });
 
 const LivestockInventorySchema  = Schema({
-    cattle: {
-        type: CattleSchema,
-        require: true
-    },
-    pigs: {
-        type: PigsSchema,
-        require: true
-    },
-    birds: {
-        type: BirdsSchema,
-        require: true
-    },
     total_birds: {
         type: String,
         required: true
@@ -318,7 +306,19 @@ const AgriculturalProducerFormSchema = Schema(
         ],
         livestock_inventory: [{
             type: LivestockInventorySchema,
-            require: true
+            required: true
+        }],
+        cattle: [{
+                type: CattleSchema,
+                required: true
+        }],
+        pigs: [{
+            type: PigsSchema,
+            required: true
+        }],
+        birds: [{
+            type: BirdsSchema,
+            required: true
         }],
         issue_date: {
             type: Number,//epoch

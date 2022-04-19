@@ -18,6 +18,9 @@ const AgriculturalProducerFormCreate = Joi.object().keys({
     cultivation_system: Joi.string().required(),
     crops_produced: Joi.array().required(),
     livestock_inventory: Joi.array().required(),
+    cattle: Joi.array().required(),
+    pigs: Joi.array().required(),
+    birds: Joi.array().required(),
     issue_date: Joi.number().required()
 });
 
@@ -40,6 +43,9 @@ const AgriculturalProducerFormUpdate = Joi.object().keys({
     cultivation_system: Joi.string().required(),
     crops_produced: Joi.array().required(),
     livestock_inventory: Joi.array().required(),
+    cattle: Joi.array().required(),
+    pigs: Joi.array().required(),
+    birds: Joi.array().required(),
     issue_date: Joi.number().required()
 });
 

@@ -174,17 +174,13 @@ const MonitoringSchema = Schema(
             type: Boolean,
             required: true
         },
-        landed_catch: [{ type: LandedCatchSchema, require: true }],
+        landed_catch: [{ type: LandedCatchSchema, required: true }],
         observation: {
             type: String,
             required: true
         },
-        value_state: {
-            type: String,
-            required: true,
-            enum: ['E', 'N', 'F', 'D']
-        },
-        operating_expense: [{ type: ItemOperationSchema, require: true }],
+        name_of_fishermen: [{ type: String, required: true }],
+        operating_expense: [{ type: ItemOperationSchema, required: true }],
         issue_date: {
             type: Number,//epoch
             required: true

@@ -21,7 +21,7 @@ const QuestionFormSchema = Schema(
             type: String,
             required: true
         },
-        data: [{ type: dataSchema, require: false }],
+        data: [{ type: dataSchema, required: false }],
         widget_type: {
             type: String,
             required: true
