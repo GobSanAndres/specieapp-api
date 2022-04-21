@@ -80,6 +80,13 @@ const ReelSchema  = Schema({
     }
 }); */
 
+const NameOfFishermenSchema = Schema({
+    name: {
+        type: String,
+        required: true
+    }
+});
+
 const MonitoringSchema = Schema(
     {
         registry_number: {
@@ -179,7 +186,7 @@ const MonitoringSchema = Schema(
             type: String,
             required: true
         },
-        name_of_fishermen: [{ type: String, required: true }],
+        name_of_fishermen: [{ type: NameOfFishermenSchema, required: true }],
         operating_expense: [{ type: ItemOperationSchema, required: true }],
         issue_date: {
             type: Number,//epoch

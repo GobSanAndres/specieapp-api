@@ -320,6 +320,14 @@ const AgriculturalProducerFormSchema = Schema(
             type: BirdsSchema,
             required: true
         }],
+        latitude: {
+            type: Number,
+            required: true
+        },
+        length: {
+            type: Number,
+            required: true
+        },
         issue_date: {
             type: Number,//epoch
             required: true
