@@ -149,10 +149,7 @@ const MonitoringSchema = Schema(
             type: String,
             required: true
         },
-        handLine:{
-            type: Array,
-            required: false
-        },
+        handLine: [{ type: String, require: false }],
         nasa:{
             type: String,
             required: false

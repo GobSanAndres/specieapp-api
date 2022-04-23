@@ -76,7 +76,7 @@ const reportServices = async(Data, req, res, isPopulate) => {
                 else
                     populate[`populate${index}`] = isPopulate[`populate${index}`]
             }
-        
+
         const [ total, items ] = await Promise.all([
             Data.countDocuments(query),
             Data.find(query)
