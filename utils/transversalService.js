@@ -56,6 +56,7 @@ const listServiceBoatRGP = async(req, res) => {
         sendDataResponseApi(res, message.list, { data: items }, { items, req, action: Actions.list });
     }
     catch(error){
+        console.error('Error al consumir el api RGP', error);
         res.status(error?.response?.status || 500).send({message: 'Error al consumir el api RGP'})
     }
 
