@@ -142,13 +142,11 @@ const IndustrialVesselInspectionSchema = Schema(
             required: true
         },
         captain_name: {
-            type: Schema.Types.ObjectId,
-            ref: 'Usuario',
+            type: String,
             required: true
         },
         permit_holder: {
-            type: Schema.Types.ObjectId,
-            ref: 'Usuario',
+            type: String,
             required: true
         },
         patent_number: {
@@ -191,43 +189,43 @@ const IndustrialVesselInspectionSchema = Schema(
         fishing_areas: [{ type: FishingAreasSchema, required: true }],
         diving_number_pangas_perday: {
             type: String,
-            required: true
+            required: false
         },
         diving_number_divers_perpanga: {
             type: String,
-            required: true
+            required: false
         },
         diving_effort_diver_perday: {
             type: String,
-            required: true
+            required: false
         },
         lobster_pots_number_lines_perdays: {
             type: String,
-            required: true
+            required: false
         },
         lobster_pots_number_lingadas_perlines: {
             type: String,
-            required: true
+            required: false
         },
         lobster_pots_number_nasa_perlingada:{
             type: String,
-            required: true
+            required: false
         },
         lobster_pots_effort: {
             type: String,
-            required: true
+            required: false
         },
         fish_pots_type: {
             type: String,
-            required: true
+            required: false
         },
         fish_pots_number_pots_perday: {
             type: String,
-            required: true
+            required: false
         },
         fish_pots_effort_pots_perday: {
             type: String,
-            required: true
+            required: false
         },
         long_line: {
             type: String,
