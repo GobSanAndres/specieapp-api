@@ -254,7 +254,7 @@ const IndustrialVesselInspectionSchema = Schema(
         number_seals: [{ type: NumberSealsSchema, required: true }],
         observations: {
             type: String,
-            required: true
+            required: false
         },
         signatureRegister: {
             type: String,

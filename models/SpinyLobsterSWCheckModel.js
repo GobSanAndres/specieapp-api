@@ -10,10 +10,35 @@ const WeightCheckSpeciesSchema  = Schema({
         type: String,
         required: true
     },
+    size: {
+        type: Number,
+        required: true
+    },
     weight: {
         type: String,
         required: true
     },
+    sex: {
+        type: String,
+        required: true,
+        enum: ['Macho', 'Hembra']
+    },
+    ovate: {
+        type: Boolean,
+        required: true
+    },
+    observations: {
+        type: String,
+        required: false
+    },
+});
+
+
+const NamesPeopleSamplingSchema = Schema({
+    name: {
+        type: String,
+        required: true
+    }
 });
 
 const SpinyLobsterSWCheckSchema = Schema(
@@ -49,6 +74,23 @@ const SpinyLobsterSWCheckSchema = Schema(
             type: String,
             required: true
         },
+        products_below_size: {
+            type: Boolean,
+            required: true
+        },
+        number_of_ovate_females: {
+            type: Number,
+            required: true
+        },
+        number_of_tails_below_size: {
+            type: Number,
+            required: true
+        },
+        total_weight: {
+            type: Number,
+            required: true
+        },
+        names_people_sampling: [{ type: NamesPeopleSamplingSchema, required: true }],
         issue_date: {
             type: Number,//epoch
             required: true

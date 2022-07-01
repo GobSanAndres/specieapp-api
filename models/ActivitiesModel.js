@@ -31,7 +31,7 @@ const ActivitiesSchema = Schema(
         },
         observation: {
             type: String,
-            required: true
+            required: false
         },
         is_active: {
             type: Boolean,
