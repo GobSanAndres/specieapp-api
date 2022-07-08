@@ -2,14 +2,6 @@ const { Schema, model } = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
 const WeightCheckSpeciesSchema  = Schema({
-    specie: {
-        type: String,
-        required: true
-    },
-    state: {
-        type: String,
-        required: true
-    },
     size: {
         type: Number,
         required: true
@@ -67,10 +59,6 @@ const SpinyLobsterSWCheckSchema = Schema(
         },
         weight_check_specie: [{ type: WeightCheckSpeciesSchema, required: true }],
         signatureRegister: {
-            type: String,
-            required: true
-        },
-        signatureInstitution: {
             type: String,
             required: true
         },
