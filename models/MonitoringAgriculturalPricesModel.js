@@ -30,6 +30,10 @@ const MonitoringAgriculturalPricesSchema = Schema(
             type: String,
             required: true
         },
+        business_address_establishment: {
+            type: String,
+            required: true
+        },
         person_type:{
             type: String,
             required: true,
