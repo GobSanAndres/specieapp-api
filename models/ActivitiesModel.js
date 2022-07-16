@@ -31,7 +31,8 @@ const ActivitiesSchema = Schema(
         },
         observation: {
             type: String,
-            required: false
+            required: false,
+            default: 'Ninguna'
         },
         is_active: {
             type: Boolean,

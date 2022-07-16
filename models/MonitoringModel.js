@@ -181,7 +181,8 @@ const MonitoringSchema = Schema(
         landed_catch: [{ type: LandedCatchSchema, required: true }],
         observation: {
             type: String,
-            required: false
+            required: false,
+            default: 'Ninguna'
         },
         name_of_fishermen: [{ type: NameOfFishermenSchema, required: true }],
         operating_expense: [{ type: ItemOperationSchema, required: true }],
