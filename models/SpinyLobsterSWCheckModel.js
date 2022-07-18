@@ -21,8 +21,7 @@ const WeightCheckSpeciesSchema  = Schema({
     },
     observations: {
         type: String,
-        required: false,
-        default: 'Ninguna'
+        required: false
     },
 });
 

@@ -20,56 +20,46 @@ const ReelSchema = Schema({
     },
     number_reel_perday: {
         type: String,
-        required: true,
-        default: '0'
+        required: true
     },
     number_hooks: {
         type: String,
-        required: true,
-        default: '0'
+        required: true
     },
     hook_type: {
         type: String,
-        required: true,
-        default: 'Sin especificar'
+        required: true
     },
     hook_gauge: {
         type: String,
-        required: true,
-        default: '0'
+        required: true
     },
     effort_reel_perday: {
         type: String,
-        required: true,
-        default: '0'
+        required: true
     }
 });
 
 const LongLineSchema = Schema({
     sets_number_perday: {
         type: String,
-        required: true,
-        default: '0'
+        required: true
     },
     sets_number: {
         type: String,
-        required: true,
-        default: '0'
+        required: true
     },
     sets_hook_type: {
         type: String,
-        required: true,
-        default: 'Sin especificar'
+        required: true
     },
     sets_hook_gauge: {
         type: String,
-        required: true,
-        default: '0'
+        required: true
     },
     sets_effort_hook_perday: {
         type: String,
-        required: true,
-        default: '0'
+        required: true
     },
 })
 
@@ -199,53 +189,43 @@ const IndustrialVesselInspectionSchema = Schema(
         fishing_areas: [{ type: FishingAreasSchema, required: true }],
         diving_number_pangas_perday: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         diving_number_divers_perpanga: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         diving_effort_diver_perday: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         lobster_pots_number_lines_perdays: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         lobster_pots_number_lingadas_perlines: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         lobster_pots_number_nasa_perlingada:{
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         lobster_pots_effort: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         fish_pots_type: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         fish_pots_number_pots_perday: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         fish_pots_effort_pots_perday: {
             type: String,
-            required: false,
-            default: '0'
+            required: false
         },
         long_line: {
             type: String,
@@ -274,8 +254,7 @@ const IndustrialVesselInspectionSchema = Schema(
         number_seals: [{ type: NumberSealsSchema, required: true }],
         observations: {
             type: String,
-            required: false,
-            default: 'Ninguna'
+            required: false
         },
         signatureRegister: {
             type: String,
