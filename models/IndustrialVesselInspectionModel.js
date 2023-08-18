@@ -230,7 +230,6 @@ const IndustrialVesselInspectionSchema = Schema(
         long_line: {
             type: String,
             required: true,
-            enum: ['Pelagico', 'Demersal', 'Tiburoreno']
         },
         longLine:[{ type: LongLineSchema, require: true }],
         reel: [{ type: ReelSchema, require: true }],
