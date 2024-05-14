@@ -21,7 +21,7 @@ const QuestionarySchema = Schema(
             required: true,
             enum: ['Tipo A', 'Tipo B']
         },
-        state:{
+        is_active:{
             type: Boolean,
             required: false,
             default: true

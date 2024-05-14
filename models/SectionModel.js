@@ -20,7 +20,7 @@ const SectionSchema = Schema(
             type: String,
             required: false
         },
-        state:{
+        is_active:{
             type: Boolean,
             required: false,
             default: true
