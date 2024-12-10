@@ -2,7 +2,8 @@ const { response, request } = require("express");
 const bycryptjs = require('bcryptjs');
 
 const validTokenApp = async(req = request, res = response, next) => {
-    const token = req.header('Authorization');
+    let token = req.header('Authorization')
+    token = token.replace(/^Bearer\s+/, '')
 
     console.log("token ", token);
 

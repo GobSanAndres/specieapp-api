@@ -1,3 +1,4 @@
 SECRET=s3cr3r-pl3as3
-MONGODB_CNN=s3cr3r-pl3as3
-PORT=5001
+SECRET_APP=s3cr3r-pl3as3
+MONGODB_CNN=example
+PORT=example
