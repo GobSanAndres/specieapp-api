@@ -5,7 +5,7 @@ const listFishermen = async(req) => {
     try{
         let auth = await getToken();
 
-        let fishermen = await axios.get(`${process.env.API_RPG}api/rpg-sai/external-api/v1/all-fishermen/${req.params.type}`, {...auth, params: req.query});
+        let fishermen = await axios.get(`${process.env.API_RPG}api/rpg-sai/external-api/v1/apprgp/all-fishermen/${req.params.type}`, {...auth, params: req.query});
         return fishermen.data.data;
 
     }catch(error){
